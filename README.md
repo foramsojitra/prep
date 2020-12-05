@@ -21,18 +21,17 @@ var variables can be re-declared and updated :
   console.log(a);
   }
 result will be => hello
-```
-
-Hoisting of var
-Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution. This means that if we do this: ```javascript
+--------------------
 console.log(a);
       var a = 1;
  this code will interpreted as 
     var a;
     console.log(a); // a is undefined
     a = 1;
+```
+
 let has a block scope
---------------------
+```javascript
   function newFunction() {
   if(true){
           let a = "hello";
