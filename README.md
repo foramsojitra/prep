@@ -44,3 +44,22 @@ result will be => VM250:5 Uncaught ReferenceError: a is not defined
 * var variables can be updated and re-declared within its scope; let variables can be updated but not re-declared; const variables can neither be updated nor re-declared.
 * They are all hoisted to the top of their scope. But while var variables are initialized with undefined, let and const variables are not initialized.
 * While var and let can be declared without being initialized, const must be initialized during declaration.
+
+### Q : What are the different data types present in javascript?
+A : 
+
+### Q : Difference between "==" and "===" 
+A : == compares value and === compares vlue and type
+== convert type of right side to type of left and then compare
+
+### Q : Difference between null and undefined
+A : both of them is an empty value but difference is that when you define a variable and not assign any value it automatically so you don't have to assign value undefine js do it for you. In case of null you have to assugn value null to variable. Typeof undefined will be undefined while typeof null will be object.
+
+### Q : What is use of arrow 
+A : arrow functions were introduced in ES6.
+* The handling of this is also different in arrow functions compared to regular functions.
+* In short, with arrow functions there are no binding of this.
+* In regular functions the this keyword represented the object that called the function, which could be the window, the document, a button or whatever.
+* With arrow functions the this keyword always represents the object that defined the arrow function.
+
+
