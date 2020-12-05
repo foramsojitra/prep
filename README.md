@@ -7,12 +7,15 @@ A : JavaScript is a programming language commonly used in web development. It wa
 A : var is there from the begining of the js, let and const introduced in ES6 all of this can be used for variable declaration. 
 var declarations are globally scoped or function/locally scoped. 
 var variables can be re-declared and updated : 
+      ```javascript
       var a = 1;
       var a = 2; 
         OR
       var a = 1;
       a = 2;
------i.e. 
+      ```
+-----i.e.
+```javascript 
   function newFunction() {
   if(true){
           var a = "hello";
@@ -20,16 +23,20 @@ var variables can be re-declared and updated :
   console.log(a);
   }
 result will be => hello
+```
 
 Hoisting of var
-Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution. This means that if we do this: console.log(a);
+Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution. This means that if we do this: ```javascript
+console.log(a);
       var a = 1;
  this code will interpreted as 
     var a;
     console.log(a); // a is undefined
     a = 1;
 let has a block scope
+```
 -----i.e. 
+```javascript
   function newFunction() {
   if(true){
           let a = "hello";
@@ -37,6 +44,7 @@ let has a block scope
   console.log(a);
   }
 result will be => VM250:5 Uncaught ReferenceError: a is not defined
+```
 
 final -- 
 * var declarations are globally scoped or function scoped while let and const are block scoped.
