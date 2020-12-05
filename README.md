@@ -7,15 +7,13 @@ A : JavaScript is a programming language commonly used in web development. It wa
 A : var is there from the begining of the js, let and const introduced in ES6 all of this can be used for variable declaration. 
 var declarations are globally scoped or function/locally scoped. 
 var variables can be re-declared and updated : 
-      ```javascript
+ ```javascript
       var a = 1;
       var a = 2; 
         OR
       var a = 1;
       a = 2;
-      ```
------i.e.
-```javascript 
+--------------------
   function newFunction() {
   if(true){
           var a = "hello";
@@ -34,9 +32,7 @@ console.log(a);
     console.log(a); // a is undefined
     a = 1;
 let has a block scope
-```
------i.e. 
-```javascript
+--------------------
   function newFunction() {
   if(true){
           let a = "hello";
@@ -45,8 +41,6 @@ let has a block scope
   }
 result will be => VM250:5 Uncaught ReferenceError: a is not defined
 ```
-
-final -- 
 * var declarations are globally scoped or function scoped while let and const are block scoped.
 * var variables can be updated and re-declared within its scope; let variables can be updated but not re-declared; const variables can neither be updated nor re-declared.
 * They are all hoisted to the top of their scope. But while var variables are initialized with undefined, let and const variables are not initialized.
