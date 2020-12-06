@@ -87,7 +87,9 @@ x.foo = 'Something else';
 console.log(y.foo); // Something else
 console.log(x === y) // true
 
-As you can see, x is a mutable object, and any change in the property of x gets reflected in the value of y. Why? They all share the same reference. So, when you update the value of a property of x, you’re modifying the value for all the references to that object.
+As you can see, x is a mutable object, and any change in the property of x gets reflected in the value of y.
+They all share the same reference. So, when you update the value of a property of x, you’re modifying 
+the value for all the references to that object.
 ~~~
 
 ### Q : Difference between "==" and "===" 
