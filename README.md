@@ -133,7 +133,7 @@ A : type of null is "object" and type of function is "function".
 A : We can create nested functions in JavaScript. Inner function can access variables and parameters of an outer function (however, cannot access arguments object of outer function).
 A JavaScript closure is when an inner function has access to its outer enclosing function's variables and properties. like bwlow example.
 
-```
+```javascript
 function OuterFunction() {
 
     var outerVariable = 1;
@@ -145,7 +145,59 @@ function OuterFunction() {
     InnerFunction();
 }
 ```
+###Q : What is prototypal inheritance?
+A : When we read a property from object , and it's missing, JavaScript automatically takes it from the prototype. In programming, such thing is called “prototypal inheritance”.
+```javascript
+let car = function(model) {
+ this.model = model;
+};
 
+car.prototype.getModel = function() {
+ return this.model;
+}
 
+let a = new car('Toyota');
+console.log(a.getModel());
+}
+==> result: Toyota
+```
 
+###Q : Function Declarations vs. Function Expressions
+A : 
+```javascript
+//Function Declarations
+function a() {
+ console.log('Hello');
+}
 
+//Function Expressons
+var a = function() {
+ console.log('Hello');
+}
+```
+###Q : What is promises?
+A : Promises are used to handle asynchronous operations in JavaScript. 
+it has 4 state: 
+*fulfilled: Action related to the promise succeeded
+*rejected: Action related to the promise failed
+*pending: Promise is still pending i.e not fulfilled or rejected yet
+*settled: Promise has fulfilled or rejected
+```
+var promise = new Promise(function(resolve, reject) { 
+  const x = "geeksforgeeks"; 
+  const y = "geeksforgeeks"
+  if(x === y) { 
+    resolve(); 
+  } else { 
+    reject(); 
+  } 
+}); 
+  
+promise. 
+    then(function () { 
+        console.log('Success, You are a GEEK'); 
+    }). 
+    catch(function () { 
+        console.log('Some error has occured'); 
+    }); 
+```
