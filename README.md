@@ -123,4 +123,29 @@ me.thisInRegular();
 ==> result : undefined
              1
 ```
+###Q : What would be the result of 3+2+"7"?
+A : Since 3 and 2 are integers, they will be added numerically. And since 7 is a string, its concatenation will be done. So the result would be 57.
+
+###Q : What is type of null and function?
+A : type of null is "object" and type of function is "function".
+
+###Q : What is closure and counter dillema?
+A : We can create nested functions in JavaScript. Inner function can access variables and parameters of an outer function (however, cannot access arguments object of outer function).
+A JavaScript closure is when an inner function has access to its outer enclosing function's variables and properties. like bwlow example.
+
+```
+function OuterFunction() {
+
+    var outerVariable = 1;
+
+    function InnerFunction() {
+        alert(outerVariable);
+    }
+
+    InnerFunction();
+}
+```
+
+
+
 
