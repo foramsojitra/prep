@@ -263,9 +263,21 @@ if(err){
 });
 ```
 
+### Q :  Explain the concept of middleware in Node.js?
+A : In general, middleware is a function receives the Request and Response objects. In other words, in an application’s request-response cycle these functions have access to various request &  response objects along with the next function of the cycle. The next function of middleware is represented with the help of a variable, usually named next.
 
+### Q : For Node.js, why Google uses V8 engine?
+A : Google uses V8 as it is a Chrome runtime engine that converts JavaScript code into native machine code. This, in turn, speeds up the application execution and response process and give you a fast running application.
 
+### Q : What is the use of NODE_ENV?
+A : If the project is in the production stage, Node.js promotes the convention of making use of NODE_ENV variable to flag it. This helps in taking better judgment during the development of the projects. Also, when you set your NODE_ENV to production, your application tends to perform 3 times faster.
 
+### Q : Describe the exit codes of Node.js.
+A : Uncaught fatal exception
+Unused
+Fatal Error
+Internal Exception handler Run-time failure
+Internal JavaScript Evaluation Failure
 
-
+### Q : 
 
