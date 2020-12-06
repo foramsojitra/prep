@@ -175,6 +175,11 @@ var a = function() {
  console.log('Hello');
 }
 ```
+###Q : What do you understand by Callback and Callback hell in JavaScript?
+A : Callback: It is used to handle the execution of function after the completion of the execution of another function. A callback would be helpful in working with events. In the callback, a function can be passed as an argument to another function. It is a great way when we are dealing with basic cases such as minimal asynchronous operations.
+
+Callback hell: When we develop a web application that includes a lot of code, then working with callback is messy. This excessive Callback nesting is often referred to as Callback hell.
+
 ###Q : What is promises?
 A : Promises are used to handle asynchronous operations in JavaScript. 
 it has 4 state: 
@@ -201,3 +206,20 @@ promise.
         console.log('Some error has occured'); 
     }); 
 ```
+###Q : console.log(6<7<8) ?
+A : true
+it counts from left to right and  6<7 is true and true means 1 so after 1st comparision it become 1<7 which is true so answer will be true.
+
+###Q : What is ECMA Script and How are JavaScript and ECMA Script related?
+ECMA Script are like rules and guideline while Javascript is a scripting language used for web development.
+
+###Q :  What are some of the features of ES6?
+A : 
+*Support for constants (also known as “immutable variables”)
+*Block-Scope support for both variables, constants, functions
+*Arrow functions
+*Extended Parameter Handling
+*Template Literals and Extended Literals
+*Spread operator
+*Destructuring Assignment
+
