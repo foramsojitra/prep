@@ -206,6 +206,7 @@ promise.
         console.log('Some error has occured'); 
     }); 
 ```
+
 ###Q : console.log(6<7<8) ?
 A : true
 it counts from left to right and  6<7 is true and true means 1 so after 1st comparision it become 1<7 which is true so answer will be true.
@@ -223,3 +224,4 @@ A :
 *Spread operator
 *Destructuring Assignment
 
+# Node.js
