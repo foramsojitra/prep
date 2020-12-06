@@ -123,13 +123,14 @@ me.thisInRegular();
 ==> result : undefined
              1
 ```
-###Q : What would be the result of 3+2+"7"?
+
+### Q : What would be the result of 3+2+"7"?
 A : Since 3 and 2 are integers, they will be added numerically. And since 7 is a string, its concatenation will be done. So the result would be 57.
 
-###Q : What is type of null and function?
+### Q : What is type of null and function?
 A : type of null is "object" and type of function is "function".
 
-###Q : What is closure and counter dillema?
+### Q : What is closure and counter dillema?
 A : We can create nested functions in JavaScript. Inner function can access variables and parameters of an outer function (however, cannot access arguments object of outer function).
 A JavaScript closure is when an inner function has access to its outer enclosing function's variables and properties. like bwlow example.
 
@@ -145,7 +146,8 @@ function OuterFunction() {
     InnerFunction();
 }
 ```
-###Q : What is prototypal inheritance?
+
+### Q : What is prototypal inheritance?
 A : When we read a property from object , and it's missing, JavaScript automatically takes it from the prototype. In programming, such thing is called “prototypal inheritance”.
 ```javascript
 let car = function(model) {
@@ -162,7 +164,7 @@ console.log(a.getModel());
 ==> result: Toyota
 ```
 
-###Q : Function Declarations vs. Function Expressions
+### Q : Function Declarations vs. Function Expressions
 A : 
 ```javascript
 //Function Declarations
@@ -175,7 +177,7 @@ var a = function() {
  console.log('Hello');
 }
 ```
-###Q : What do you understand by Callback and Callback hell in JavaScript?
+### Q : What do you understand by Callback and Callback hell in JavaScript?
 A : Callback: It is used to handle the execution of function after the completion of the execution of another function. A callback would be helpful in working with events. In the callback, a function can be passed as an argument to another function. It is a great way when we are dealing with basic cases such as minimal asynchronous operations.
 
 Callback hell: When we develop a web application that includes a lot of code, then working with callback is messy. This excessive Callback nesting is often referred to as Callback hell.
@@ -207,7 +209,7 @@ promise.
     }); 
 ```
 
-###Q : console.log(6<7<8) ?
+### Q : console.log(6<7<8) ?
 A : true
 it counts from left to right and  6<7 is true and true means 1 so after 1st comparision it become 1<7 which is true so answer will be true.
 
@@ -225,3 +227,45 @@ A :
 *Destructuring Assignment
 
 # Node.js
+
+### Q : What is node.js? and How it works?
+A : Node.js is a Server side scripting which is used to build scalable programs. Its multiple advantages over other server side languages, the prominent being non-blocking I/O.
+Node.js works on a v8 environment, it is a virtual machine that utilizes JavaScript as its scripting language and achieves high output via non-blocking I/O and single threaded event loop.
+
+### Q : What is the advantage of using node.js?
+A : 
+*It provides an easy way to build scalable network programs
+*Generally fast
+*Great concurrency
+*Asynchronous everything
+*Almost never blocks
+
+### Q : What are the two types of API functions in Node.js ?
+A : 
+*Asynchronous, non-blocking functions
+*Synchronous, blocking functions
+
+### Q : What is control flow function?
+A : A generic piece of code which runs in between several asynchronous function calls is known as control flow function.
+
+### Q : What is an event loop in Node.js ?
+A : To process and handle external events and to convert them into callback invocations an event loop is used. So, at I/O calls, node.js can switch from one request to another.An event loop in Node.js handles all the asynchronous callbacks in an application. It is one of the most important aspects of Node.js and the reason behind Node.js have non-blocking I/O. Since Node.js is an event-driven language, you can easily attach a listener to an event and then when the event occurs the callback will be executed by the specific listener. 
+
+### Q : What is an error-first callback in Node.js?
+A : Error-first callbacks in Node.js are used to pass errors and data. The very first parameter you need to pass to these functions has to be an error object while the other parameters represent the associated data. Thus you can pass the error object for checking if anything is wrong and handle it. In case there is no issue, you can just go ahead and with the subsequent arguments.
+```javascript
+var myPost = new Post({title: 'edureka'});
+myPost.save(function(err,myInstance){
+if(err){
+//handle error and return
+}
+//go ahead with `myInstance`
+});
+```
+
+
+
+
+
+
+
