@@ -46,7 +46,11 @@ result will be => VM250:5 Uncaught ReferenceError: a is not defined
 * While var and let can be declared without being initialized, const must be initialized during declaration.
 
 ### Q : What are the different data types present in javascript?
-A : 
+A : There are two types of data types in JavaScript.
+~~~
+ 1. Primitive data type
+ 2. Non-primitive (reference) data type
+~~~
 
 ### Q : Difference between "==" and "===" 
 A : == compares value and === compares vlue and type
@@ -57,9 +61,26 @@ A : both of them is an empty value but difference is that when you define a vari
 
 ### Q : What is use of arrow 
 A : arrow functions were introduced in ES6.
+* Unlike regular functions, arrow functions do not have their own this. The value of this inside an arrow function remains the same throughout the lifecycle of the function and is always bound to the value of this in the closest non-arrow parent function.
 * The handling of this is also different in arrow functions compared to regular functions.
 * In short, with arrow functions there are no binding of this.
 * In regular functions the this keyword represented the object that called the function, which could be the window, the document, a button or whatever.
 * With arrow functions the this keyword always represents the object that defined the arrow function.
-
+```javascript
+let add = (x, y) => x + y;
+--------------------------
+let me = { 
+ value: 1, 
+ thisInArrow:() => { 
+ console.log(this.value); // no 'this' binding here 
+ }, 
+ thisInRegular(){ 
+ console.log(this.value); // 'this' binding works here 
+ } 
+};
+me.thisInArrow(); 
+me.thisInRegular();
+==> result : undefined
+             1
+```
 
