@@ -50,6 +50,44 @@ A : There are two types of data types in JavaScript.
 ~~~
  1. Primitive data type
  2. Non-primitive (reference) data type
+
+ ##JavaScript primitive data types : 
+    String, Number, Boolean, Undefined, Null
+
+ ##JavaScript primitive data types : 
+    Object, Array, RegExp
+~~~
+The difference between primitives and non-primitives is that primitives are immutable and non-primitives are mutable.
+
+### Q : What is mutable and immutable data types in javascript?
+A : Image result for what is mutable and immutable data types in javascript Mutable objects are objects whose value can change once created, while immutable objects are those whose value cannot change once created. 
+
+Primitives are known as being immutable data types because there is no way to change a primitive value once it gets created.
+~~~
+var myString = "Helllooo"
+
+console.log('myString[2]', myString[2]);
+
+myString[2] = 'c'
+
+console.log(myString);
+
+==> result : myString[2] l
+             Helllooo
+
+As u can see value of string does not changed to Hecllooo cause string is immutable
+~~~
+On the other hand Non-primitives are known as being mutable data types like Arrays and Objects.
+~~~
+var x = {
+    foo: 'bar'
+};
+var  y = x;
+x.foo = 'Something else';
+console.log(y.foo); // Something else
+console.log(x === y) // true
+
+As you can see, x is a mutable object, and any change in the property of x gets reflected in the value of y. Why? They all share the same reference. So, when you update the value of a property of x, you’re modifying the value for all the references to that object.
 ~~~
 
 ### Q : Difference between "==" and "===" 
