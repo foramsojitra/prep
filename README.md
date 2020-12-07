@@ -278,6 +278,9 @@ Unused
 Fatal Error
 Internal Exception handler Run-time failure
 Internal JavaScript Evaluation Failure
+The exit code. Default: 0.
+process.exit(1); failure
+
 
 ### Q : 
 
