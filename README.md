@@ -45,6 +45,9 @@ result will be => VM250:5 Uncaught ReferenceError: a is not defined
 * They are all hoisted to the top of their scope. But while var variables are initialized with undefined, let and const variables are not initialized.
 * While var and let can be declared without being initialized, const must be initialized during declaration.
 
+### Q : what is event bubbling in javascript?
+A : 
+
 ### Q : What are the different data types present in javascript?
 A : There are two types of data types in JavaScript.
 ~~~
