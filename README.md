@@ -4,6 +4,7 @@
 
 ### Q : What is js?
 A : JavaScript is a programming language commonly used in web development. It was originally developed by Netscape as a means to add dynamic and interactive elements to websites.JavaScript is a synchronous, blocking, single-threaded language.
+JavaScript is a dynamically typed language. In a dynamically typed language, the type of a variable is checked during run-time in contrast to statically typed language, where the type of a variable is checked during compile-time.
 
 ### Q : Difference between "var", "let" and "const"
 A : var is there from the begining of the js, let and const introduced in ES6 all of this can be used for variable declaration. 
@@ -159,6 +160,28 @@ function OuterFunction() {
 }
 ```
 
+### Q : What is currying in JavaScript?
+A : Currying is an advanced technique to transform a function of arguments n, to n functions of one or less arguments.
+```javascript
+function add (a) {
+  return function(b){
+    return a + b;
+  }
+}
+
+add(3)(4) ==> 7
+```
+
+### Q : What are object prototypes?
+A : All javascript objects inherit properties from a prototype.
+
+For example,
+Date objects inherit properties from the Date prototype
+Math objects inherit properties from the Math prototype
+Array objects inherit properties from the Array prototype.
+On top of the chain is Object.prototype. Every prototype inherits properties and methods from the Object.prototype.
+A prototype is a blueprint of an object. Prototype allows us to use properties and methods on an object even if the properties and methods do not exist on the current object.
+
 ### Q : What is prototypal inheritance?
 A : When we read a property from object , and it's missing, JavaScript automatically takes it from the prototype. In programming, such thing is called “prototypal inheritance”.
 ```javascript
@@ -197,10 +220,10 @@ Callback hell: When we develop a web application that includes a lot of code, th
 ### Q : What is promises?
 A : Promises are used to handle asynchronous operations in JavaScript. 
 it has 4 state: 
-*fulfilled: Action related to the promise succeeded
-*rejected: Action related to the promise failed
-*pending: Promise is still pending i.e not fulfilled or rejected yet
-*settled: Promise has fulfilled or rejected
+* fulfilled: Action related to the promise succeeded
+* rejected: Action related to the promise failed
+* pending: Promise is still pending i.e not fulfilled or rejected yet
+* settled: Promise has fulfilled or rejected
 ```
 var promise = new Promise(function(resolve, reject) { 
   const x = "geeksforgeeks"; 
@@ -220,6 +243,33 @@ promise.
         console.log('Some error has occured'); 
     }); 
 ```
+
+### Q : What is an Immediately Invoked Function in JavaScript?
+A : An Immediately Invoked Function ( known as IIFE and pronounced as IIFY) is a function that runs as soon as it is defined.
+```javascript
+(function(){ 
+  // Do something;
+})();
+```
+
+### Q :  Explain Implicit Type Coercion in javascript.
+A : Implicit type coercion in javascript is automatic conversion of value from one data type to another. It takes place when the operands of an expression are of different data types.
+* String coercion
+String coercion takes place while using the ‘ + ‘ operator. When a number is added to a string, the number type is always converted to the string type.
+```javascript
+var x = 3;
+var y = "3";
+x + y // Returns "33" 
+```
+
+### Q : Explain Hoisting in javascript.
+A : Hoisting is a default behaviour of javascript where all the variable and function declarations are moved on top. This means that irrespective of where the variables and functions are declared, they are moved on top of the scope. The scope can be both local and global.
+```javascript
+hoistedVariable = 3;
+console.log(hoistedVariable); // outputs 3 even when the variable is declared after it is initialized	
+var hoistedVariable;
+```
+To avoid hoisting, you can run javascript in strict mode by using “use strict” on top of the code.
 
 ### Q : console.log(6<7<8) ?
 A : true
@@ -290,8 +340,7 @@ A : Google uses V8 as it is a Chrome runtime engine that converts JavaScript cod
 A : If the project is in the production stage, Node.js promotes the convention of making use of NODE_ENV variable to flag it. This helps in taking better judgment during the development of the projects. Also, when you set your NODE_ENV to production, your application tends to perform 3 times faster.
 
 ### Q : Describe the exit codes of Node.js.
-A : 
-* Uncaught fatal exception
+A : * Uncaught fatal exception
 * Unused
 * Fatal Error
 * Internal Exception handler Run-time failure
@@ -299,3 +348,10 @@ A :
 * The exit code. Default: 0. process.exit(1); failure
 
 # React.js
+
+### Q : What is React? features of React?
+A : React is an open-source frontend JavaScript library which is used for building user interfaces especially for single page applications.
+* It uses VirtualDOM instead of RealDOM considering that RealDOM manipulations are expensive.
+* Supports server-side rendering.
+* Follows Unidirectional data flow or data binding.
+* Uses reusable/composable UI components to develop the view.
