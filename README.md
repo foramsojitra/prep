@@ -48,16 +48,14 @@ result will be => VM250:5 Uncaught ReferenceError: a is not defined
 * While var and let can be declared without being initialized, const must be initialized during declaration.
 
 ### Q : What is event bubbling and capturing?
-A :
-* When an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other ancestors.
+A : Event bubbling and capturing are two ways of event propagation
+
+When an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other ancestors.
 If you have event on body and some parent and child element than when you click on child element it will execute event on the child firstevent bubbling execute the lowest order first so child element's event will execute first than it will check if parent element has any event if it has than it will be executed and after that if body element has any event that will be executed.
 
-* 
-```
- Events first are captured down to deepest target, then bubble up. In IE<9 they only bubble.
- All handlers work on bubbling stage excepts addEventListener with last argument true, which is the only way to catch the event on capturing stage.
- Bubbling/capturing can be stopped by event.cancelBubble=true (IE) or event.stopPropagation() for other browsers.
-```
+* Events first are captured down to deepest target, then bubble up. In IE<9 they only bubble.
+* All handlers work on bubbling stage excepts addEventListener with last argument true, which is the only way to catch the event on capturing stage.
+* Bubbling/capturing can be stopped by event.cancelBubble=true (IE) or event.stopPropagation() for other browsers.
 
 ### Q : What are the different data types present in javascript?
 A : There are two types of data types in JavaScript.
@@ -300,4 +298,4 @@ A :
 * Internal JavaScript Evaluation Failure
 * The exit code. Default: 0. process.exit(1); failure
 
-#React.js
+# React.js
