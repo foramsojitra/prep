@@ -54,10 +54,10 @@ A : There are two types of data types in JavaScript.
  1. Primitive data type
  2. Non-primitive (reference) data type
 
- ##JavaScript primitive data types : 
+ JavaScript primitive data types : 
     String, Number, Boolean, Undefined, Null
 
- ##JavaScript primitive data types : 
+ JavaScript primitive data types : 
     Object, Array, RegExp
 ~~~
 The difference between primitives and non-primitives is that primitives are immutable and non-primitives are mutable.
@@ -237,11 +237,11 @@ Node.js works on a v8 environment, it is a virtual machine that utilizes JavaScr
 
 ### Q : What is the advantage of using node.js?
 A : 
-*It provides an easy way to build scalable network programs
-*Generally fast
-*Great concurrency
-*Asynchronous everything
-*Almost never blocks
+* It provides an easy way to build scalable network programs
+* Generally fast
+* Great concurrency
+* Asynchronous everything
+* Almost never blocks
 
 ### Q : What are the two types of API functions in Node.js ?
 A : 
@@ -279,12 +279,12 @@ A : Google uses V8 as it is a Chrome runtime engine that converts JavaScript cod
 A : If the project is in the production stage, Node.js promotes the convention of making use of NODE_ENV variable to flag it. This helps in taking better judgment during the development of the projects. Also, when you set your NODE_ENV to production, your application tends to perform 3 times faster.
 
 ### Q : Describe the exit codes of Node.js.
-A : Uncaught fatal exception
-Unused
-Fatal Error
-Internal Exception handler Run-time failure
-Internal JavaScript Evaluation Failure
-The exit code. Default: 0.
-process.exit(1); failure
+A : 
+* Uncaught fatal exception
+* Unused
+* Fatal Error
+* Internal Exception handler Run-time failure
+* Internal JavaScript Evaluation Failure
+* The exit code. Default: 0. process.exit(1); failure
 
 
