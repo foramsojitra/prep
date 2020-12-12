@@ -1,3 +1,5 @@
+
+
 # Javascript
 
 ### Q : What is js?
@@ -45,8 +47,17 @@ result will be => VM250:5 Uncaught ReferenceError: a is not defined
 * They are all hoisted to the top of their scope. But while var variables are initialized with undefined, let and const variables are not initialized.
 * While var and let can be declared without being initialized, const must be initialized during declaration.
 
-### Q : what is event bubbling in javascript?
-A : 
+### Q : What is event bubbling and capturing?
+A :
+* When an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other ancestors.
+If you have event on body and some parent and child element than when you click on child element it will execute event on the child firstevent bubbling execute the lowest order first so child element's event will execute first than it will check if parent element has any event if it has than it will be executed and after that if body element has any event that will be executed.
+
+* 
+```
+ Events first are captured down to deepest target, then bubble up. In IE<9 they only bubble.
+ All handlers work on bubbling stage excepts addEventListener with last argument true, which is the only way to catch the event on capturing stage.
+ Bubbling/capturing can be stopped by event.cancelBubble=true (IE) or event.stopPropagation() for other browsers.
+```
 
 ### Q : What are the different data types present in javascript?
 A : There are two types of data types in JavaScript.
@@ -254,6 +265,8 @@ A : A generic piece of code which runs in between several asynchronous function 
 ### Q : What is an event loop in Node.js ?
 A : To process and handle external events and to convert them into callback invocations an event loop is used. So, at I/O calls, node.js can switch from one request to another.An event loop in Node.js handles all the asynchronous callbacks in an application. It is one of the most important aspects of Node.js and the reason behind Node.js have non-blocking I/O. Since Node.js is an event-driven language, you can easily attach a listener to an event and then when the event occurs the callback will be executed by the specific listener. 
 
+https://www.youtube.com/watch?v=4lMN7EKdBdE&ab_channel=TechnologyAndProduct
+
 ### Q : What is event emitter in node js?
 A : The EventEmitter is a module that facilitates communication/interaction between objects in Node. EventEmitter is at the core of Node asynchronous event-driven architecture.
 
@@ -287,4 +300,4 @@ A :
 * Internal JavaScript Evaluation Failure
 * The exit code. Default: 0. process.exit(1); failure
 
-
+#React.js
