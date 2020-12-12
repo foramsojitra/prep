@@ -213,8 +213,22 @@ var a = function() {
 }
 ```
 ### Q : What do you understand by Callback and Callback hell in JavaScript?
-A : Callback: It is used to handle the execution of function after the completion of the execution of another function. A callback would be helpful in working with events. In the callback, a function can be passed as an argument to another function. It is a great way when we are dealing with basic cases such as minimal asynchronous operations.
-
+A : Callback: callback is a function that will be executed after another function gets executed.
+. It is used to handle the execution of function after the completion of the execution of another function. A callback would be helpful in working with events. In the callback, a function can be passed as an argument to another function. It is a great way when we are dealing with basic cases such as minimal asynchronous operations.
+```javascript
+function divideByHalf(sum){
+  console.log(Math.floor(sum / 2));
+}
+function multiplyBy2(sum){
+  console.log(sum * 2);
+}
+function operationOnSum(num1,num2,operation){
+  var sum = num1 + num2;
+  operation(sum);
+}
+operationOnSum(3, 3, divideByHalf); // Outputs 3
+operationOnSum(5, 5, multiplyBy2); // Outputs 20
+```
 Callback hell: When we develop a web application that includes a lot of code, then working with callback is messy. This excessive Callback nesting is often referred to as Callback hell.
 
 ### Q : What is promises?
@@ -304,8 +318,8 @@ A :
 
 ### Q : What are the two types of API functions in Node.js ?
 A : 
-*Asynchronous, non-blocking functions
-*Synchronous, blocking functions
+* Asynchronous, non-blocking functions
+* Synchronous, blocking functions
 
 ### Q : What is control flow function?
 A : A generic piece of code which runs in between several asynchronous function calls is known as control flow function.
