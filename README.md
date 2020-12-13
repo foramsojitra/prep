@@ -1,5 +1,4 @@
-# Javascript(#javascript)
-
+[javascript](#javascript "Goto Javascript")
 
 # Javascript
 
