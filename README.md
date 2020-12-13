@@ -136,7 +136,6 @@ me.thisInRegular();
 ==> result : undefined
              1
 ```
-
 ### Q : What would be the result of 3+2+"7"?
 A : Since 3 and 2 are integers, they will be added numerically. And since 7 is a string, its concatenation will be done. So the result would be 57.
 
@@ -159,7 +158,6 @@ function OuterFunction() {
     InnerFunction();
 }
 ```
-
 ### Q : What is currying in JavaScript?
 A : Currying is an advanced technique to transform a function of arguments n, to n functions of one or less arguments.
 ```javascript
@@ -171,7 +169,6 @@ function add (a) {
 
 add(3)(4) ==> 7
 ```
-
 ### Q : What are object prototypes?
 A : All javascript objects inherit properties from a prototype.
 
@@ -198,7 +195,6 @@ console.log(a.getModel());
 }
 ==> result: Toyota
 ```
-
 ### Q : Function Declarations vs. Function Expressions
 A : 
 ```javascript
@@ -257,7 +253,6 @@ promise.
         console.log('Some error has occured'); 
     }); 
 ```
-
 ### Q : What is an Immediately Invoked Function in JavaScript?
 A : An Immediately Invoked Function ( known as IIFE and pronounced as IIFY) is a function that runs as soon as it is defined.
 ```javascript
@@ -275,7 +270,6 @@ var x = 3;
 var y = "3";
 x + y // Returns "33" 
 ```
-
 ### Q : Explain Hoisting in javascript.
 A : Hoisting is a default behaviour of javascript where all the variable and function declarations are moved on top. This means that irrespective of where the variables and functions are declared, they are moved on top of the scope. The scope can be both local and global.
 ```javascript
@@ -292,7 +286,7 @@ it counts from left to right and  6<7 is true and true means 1 so after 1st comp
 ### Q : What is ECMA Script and How are JavaScript and ECMA Script related?
 ECMA Script are like rules and guideline while Javascript is a scripting language used for web development.
 
-### Q :  What are some of the features of ES6?
+### Q : What are some of the features of ES6?
 A : 
 *Support for constants (also known as “immutable variables”)
 *Block-Scope support for both variables, constants, functions
@@ -301,6 +295,50 @@ A :
 *Template Literals and Extended Literals
 *Spread operator
 *Destructuring Assignment
+
+### Q : What is memoization?
+A : Memoization is an optimization technique that speeds up applications by storing the results of expensive function calls and returning the cached result when the same inputs are supplied again.
+Memoization is used for expensive function calls but in the following example, we are considering a simple function for understanding the concept of memoization better.
+```javascript
+function memoizedAddTo256(){
+  var cache = {};
+
+  return function(num){
+    if(num in cache){
+      console.log("cached value");
+      return cache[num]
+
+    }
+    else{
+      cache[num] = num + 256;
+      return cache[num];
+    }
+  }
+}
+
+var memoizedFunc = memoizedAddTo256();
+
+memoizedFunc(20); // Normal return
+memoizedFunc(20); // Cached return
+```
+Although using memoization saves time, it results in larger consumption of memory since we are storing all the computed results.
+
+### Q : What is a Temporal Dead Zone?
+A : Temporal Dead Zone is a behaviour that occurs with variables declared using let and const keywords.
+It is a behaviour where we try to access a variable before it is initialized.
+```javascript
+x = 23; // Gives reference error
+
+let x;
+
+
+function anotherRandomFunc(){
+  message = "Hello"; // Throws a reference error
+
+  let message;
+}
+anotherRandomFunc();
+```
 
 # Node.js
 
