@@ -339,6 +339,19 @@ function anotherRandomFunc(){
 }
 anotherRandomFunc();
 ```
+### Q : What is Higher-Order Functions?
+A : In Javascript, functions are values ( first-class citizens ). This means that they can be assigned to a variable and/or passed as a value. 
+A function that accepts and/or returns another function is called a higher-order function. The map function is one of the many higher-order functions built into the language. sort, reduce, filter, forEach are other examples of higher-order functions built into the language.
+For example, the map function on arrays is a higher order function. The map function takes a function as an argument.
+```javascript
+const double = n => n * 2
+[1, 2, 3, 4].map(double) // [ 2, 4, 6, 8 ]
+--- OR ---
+[1, 2, 3, 4].map(function(n){
+    return n * 2
+}) // [ 2, 4, 6, 8 ]
+
+```
 
 # Node.js
 
