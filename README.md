@@ -213,7 +213,7 @@ var a = function() {
 }
 ```
 ### Q : What do you understand by Callback and Callback hell in JavaScript?
-A : Callback: callback is a function that will be executed after another function gets executed.
+A : Callback: Callback is an asynchronous equivalent for a function. A callback function is called at the completion of a given task.  callback is a function that will be executed after another function gets executed.
 . It is used to handle the execution of function after the completion of the execution of another function. A callback would be helpful in working with events. In the callback, a function can be passed as an argument to another function. It is a great way when we are dealing with basic cases such as minimal asynchronous operations.
 ```javascript
 function divideByHalf(sum){
