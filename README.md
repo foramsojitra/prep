@@ -50,6 +50,14 @@ result will be => VM250:5 Uncaught ReferenceError: a is not defined
 * They are all hoisted to the top of their scope. But while var variables are initialized with undefined, let and const variables are not initialized.
 * While var and let can be declared without being initialized, const must be initialized during declaration.
 
+### Q : Different Types of Loops in JavaScript
+A : 
+* while — loops through a block of code as long as the condition specified evaluates to true.
+* do…while — loops through a block of code once; then the condition is evaluated. If the condition is true, the statement is repeated as long as the specified condition is true.
+* for — loops through a block of code until the counter reaches a specified number.
+* for…in — loops through the properties of an object.
+* for…of — loops over iterable objects such as arrays, strings, etc.
+
 ### Q : What is event bubbling and capturing?
 A : Event bubbling and capturing are two ways of event propagation
 
