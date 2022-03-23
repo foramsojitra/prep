@@ -164,11 +164,16 @@ function OuterFunction() {
     var outerVariable = 1;
 
     function InnerFunction() {
-        alert(outerVariable);
+        console.log(outerVariable);
     }
 
     InnerFunction();
+    //or
+    // return InnerFunction
 }
+OuterFunction()
+//or
+//OuterFunction()();
 ```
 ### Q : What is currying in JavaScript?
 A : Currying is an advanced technique to transform a function of arguments n, to n functions of one or less arguments.
