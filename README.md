@@ -429,11 +429,4 @@ A : * Uncaught fatal exception
 * Internal JavaScript Evaluation Failure
 * The exit code. Default: 0. process.exit(1); failure
 
-# React.js
 
-### Q : What is React? features of React?
-A : React is an open-source frontend JavaScript library which is used for building user interfaces especially for single page applications.
-* It uses VirtualDOM instead of RealDOM considering that RealDOM manipulations are expensive.
-* Supports server-side rendering.
-* Follows Unidirectional data flow or data binding.
-* Uses reusable/composable UI components to develop the view.
