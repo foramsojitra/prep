@@ -1,6 +1,5 @@
-[Javascript](#javascript "Goto Javascript")
-
-[Node.js](#Node.js "Goto Node.js")
+<!-- [Javascript](#javascript "Goto Javascript") -->
+<!-- [Node.js](#Node.js "Goto Node.js") -->
 
 # Javascript
 
