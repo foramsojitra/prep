@@ -1,8 +1,14 @@
 # Node.js
 
 ### Q : What is node.js? and How it works?
-A : Node.js is a Server side scripting which is used to build scalable programs. Its multiple advantages over other server side languages, the prominent being non-blocking I/O.
-Node.js works on a v8 environment, it is a virtual machine that utilizes JavaScript as its scripting language and achieves high output via non-blocking I/O and single threaded event loop.
+A : 
+* Node.js is a Server side scripting which is used to build scalable programs. Its multiple advantages over other server side languages, the prominent being non-blocking I/O.
+
+* It is used to develop I/O intensive web applications like video streaming sites, single-page applications, and other web applications.
+
+* Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
+
+* Node.js works on a v8 environment, it is a virtual machine that utilizes JavaScript as its scripting language and achieves high output via non-blocking I/O and single threaded event loop.
 
 ### Q : What is the advantage of using node.js?
 A : 
