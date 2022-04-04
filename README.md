@@ -195,6 +195,12 @@ Array objects inherit properties from the Array prototype.
 On top of the chain is Object.prototype. Every prototype inherits properties and methods from the Object.prototype.
 A prototype is a blueprint of an object. Prototype allows us to use properties and methods on an object even if the properties and methods do not exist on the current object.
 
+### Q : What is a prototype chain?
+A : Prototype chaining is used to build new types of objects based on existing ones. It is similar to inheritance in a class based language.
+
+The prototype on object instance is available through Object.getPrototypeOf(object) or proto property whereas prototype on constructors function is available through Object.prototype.
+
+
 ### Q : What is prototypal inheritance?
 A : When we read a property from object , and it's missing, JavaScript automatically takes it from the prototype. In programming, such thing is called “prototypal inheritance”.
 ```javascript
