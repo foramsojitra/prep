@@ -151,6 +151,21 @@ me.thisInRegular();
 ==> result : undefined
              1
 ```
+### Q : Explain “this” keyword
+A : The “this” keyword refers to the object that the function is a property of.
+The value of “this” keyword will always depend on the object that is invoking the function.
+
+```
+var obj = {
+    name:  "vivek",
+    getName: function(){
+    console.log(this.name);
+  }
+}
+        
+obj.getName();
+```
+
 ### Q : What would be the result of 3+2+"7"?
 A : Since 3 and 2 are integers, they will be added numerically. And since 7 is a string, its concatenation will be done. So the result would be 57.
 
@@ -194,9 +209,13 @@ A : All javascript objects inherit properties from a prototype.
 
 For example,
 Date objects inherit properties from the Date prototype
+
 Math objects inherit properties from the Math prototype
+
 Array objects inherit properties from the Array prototype.
+
 On top of the chain is Object.prototype. Every prototype inherits properties and methods from the Object.prototype.
+
 A prototype is a blueprint of an object. Prototype allows us to use properties and methods on an object even if the properties and methods do not exist on the current object.
 
 ### Q : What is a prototype chain?
@@ -378,3 +397,88 @@ const double = n => n * 2
 }) // [ 2, 4, 6, 8 ]
 
 ```
+### Q : What is DOM?
+A : DOM stands for Document Object Model.
+
+DOM is a programming interface for HTML and XML documents.
+
+When the browser tries to render a HTML document, it creates an object based on the HTML document called DOM. Using this DOM, we can manipulate or change various elements inside the HTML document.
+
+
+### Q : What is the rest parameter and spread operator?
+A : Both rest parameter and spread operator were introduced in the ES6 version of javascript.
+
+Rest parameter ( … )
+
+It provides an improved way of handling parameters of a function.
+
+Using the rest parameter syntax, we can create functions that can take a variable number of arguments.
+
+Any number of arguments will be converted into an array using the rest parameter.
+
+It also helps in extracting all or some parts of the arguments.
+
+Rest parameter can be used by applying three dots (...) before the parameters.
+
+```
+function extractingArgs(...args){
+  return args[1];
+}
+
+// extractingArgs(8,9,1); // Returns 9
+
+function addAllArgs(...args){
+  let sumOfArgs = 0;
+  let i = 0;
+  while(i < args.length){
+    sumOfArgs += args[i];
+    i++;
+  }
+  return sumOfArgs;
+}
+
+addAllArgs(6, 5, 7, 99); // Returns 117
+addAllArgs(1, 3, 4); // Returns 8
+```
+- Rest parameter should always be used at the last parameter of a function:
+
+Spread operator (…)
+
+Although the syntax of spread operator is exactly the same as the rest parameter, spread operator is used to spread an array, and object literals. We also use spread operators where one or more arguments are expected in a function call.
+
+```
+function addFourNumbers(num1,num2,num3,num4){
+  return num1 + num2 + num3 + num4;
+}
+
+let fourNumbers = [5, 6, 7, 8];
+
+
+addFourNumbers(...fourNumbers);
+// Spreads [5,6,7,8] as 5,6,7,8
+
+let array1 = [3, 4, 5, 6];
+let clonedArray1 = [...array1];
+// Spreads the array into 3,4,5,6
+console.log(clonedArray1); // Outputs [3,4,5,6]
+```
+
+### Q : What is Object Destructuring?
+
+A : Object destructuring is a new way to extract elements from an object or an array.
+
+```
+const classDetails = {
+  strength: 78,
+  benches: 39,
+  blackBoard:1
+}
+
+const {strength:classStrength, benches:classBenches,blackBoard:classBlackBoard} = classDetails;
+
+console.log(classStrength); // Outputs 78
+console.log(classBenches); // Outputs 39
+console.log(classBlackBoard); // Outputs 1
+```
+
+
