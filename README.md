@@ -120,6 +120,8 @@ the value for all the references to that object.
 A : == compares value and === compares vlue and type
 == convert type of right side to type of left and then compare
 
+=== is faster than ==
+
 ### Q : Difference between null and undefined
 A : both of them is an empty value but difference is that when you define a variable and not assign any value it automatically so you don't have to assign value undefine js do it for you. In case of null you have to assugn value null to variable. Typeof undefined will be undefined while typeof null will be object.
 
