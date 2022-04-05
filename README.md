@@ -51,6 +51,54 @@ result will be => VM250:5 Uncaught ReferenceError: a is not defined
 * They are all hoisted to the top of their scope. But while var variables are initialized with undefined, let and const variables are not initialized.
 * While var and let can be declared without being initialized, const must be initialized during declaration.
 
+### Q : JS array method
+A : 
+The pop() method removes the last element from an array. The pop() method returns the value that was "popped out".
+
+The push() method adds a new element to an array (at the end).The push() method returns the new array length.
+
+The shift() method removes the first array element and "shifts" all other elements to a lower index.The shift() method returns the value that was "shifted out".
+
+The unshift() method adds a new element to an array (at the beginning), and "unshifts" older elements.The unshift() method returns the new array length.
+
+The concat() method creates a new array by merging (concatenating) existing arrays, The concat() method does not change the existing arrays. It always returns a new array.The concat() method can take any number of array arguments.
+
+Splicing and Slicing Arrays :
+The splice() method can be used to add new items to an array
+
+```
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2, 0, "Lemon", "Kiwi");
+```
+The first parameter (2) defines the position where new elements should be added (spliced in).
+
+The second parameter (0) defines how many elements should be removed.
+
+The rest of the parameters ("Lemon" , "Kiwi") define the new elements to be added.
+
+The splice() method returns an array with the deleted items:
+
+The slice() method slices out a piece of an array into a new array.
+
+This example slices out a part of an array starting from array element 1 ("Orange"):
+
+The slice() method creates a new array.
+
+The slice() method does not remove any elements from the source array.
+
+### Q : What is scope in javascript
+A : Scope is the accessibility of variables, functions, and objects in some particular part of your code during runtime. In other words, scope determines the visibility of variables and other resources in areas of your code.
+
+### Q : What is a first order function
+A : First-order function is a function that doesn’t accept another function as an argument and doesn’t return a function as its return value.
+
+```const firstOrder = () => console.log ('I am a first order function!');```
+
+### Q : What is a strict mode in javascript
+A : Strict Mode is a new feature in ECMAScript 5 that allows you to place a program, or a function, in a “strict” operating context. This way it prevents certain actions from being taken and throws more exceptions. The literal expression "use strict"; instructs the browser to use the javascript code in the Strict mode.
+
+
+
 ### Q : Different Types of Loops in JavaScript
 A : 
 * while — loops through a block of code as long as the condition specified evaluates to true.
@@ -298,6 +346,20 @@ promise.
         console.log('Some error has occured'); 
     }); 
 ```
+### Q : What are the pros and cons of promises over callbacks? 
+A : Below are the list of pros and cons of promises over callbacks,
+
+Pros:
+
+It avoids callback hell which is unreadable
+Easy to write sequential asynchronous code with .then()
+Easy to write parallel asynchronous code with Promise.all()
+Solves some of the common problems of callbacks(call the callback too late, too early, many times and swallow errors/exceptions)
+Cons:
+
+It makes little complex code
+You need to load a polyfill if ES6 is not supported
+
 ### Q : What is an Immediately Invoked Function in JavaScript?
 A : An Immediately Invoked Function ( known as IIFE and pronounced as IIFY) is a function that runs as soon as it is defined.
 ```javascript
