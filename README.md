@@ -7,6 +7,8 @@
 A : JavaScript is a programming language commonly used in web development. It was originally developed by Netscape as a means to add dynamic and interactive elements to websites.JavaScript is a synchronous, blocking, single-threaded language.
 JavaScript is a dynamically typed language. In a dynamically typed language, the type of a variable is checked during run-time in contrast to statically typed language, where the type of a variable is checked during compile-time.
 
+JavaScript is a dynamically typed language. In a dynamically typed language, the type of a variable is checked during run-time in contrast to statically typed language, where the type of a variable is checked during compile-time
+
 ### Q : Difference between "var", "let" and "const"
 A : var is there from the begining of the js, let and const introduced in ES6 all of this can be used for variable declaration. 
 var declarations are globally scoped or function/locally scoped. 
