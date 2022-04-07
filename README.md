@@ -543,4 +543,19 @@ console.log(classBenches); // Outputs 39
 console.log(classBlackBoard); // Outputs 1
 ```
 
+### Q : What are the falsy values in JavaScript?
+A : '', 0, null
+undefined
+false
+NaN
+
+### Q : How to check if a value is falsy?
+A : Use the !! operator or Boolean function to check if they’re falsy.
+If a value is falsy, then both will return false.
+
+!!0
+false
+
+### https://stackoverflow.com/questions/17502948/nexttick-vs-setimmediate-visual-explanatio
+
 
