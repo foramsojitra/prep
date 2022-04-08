@@ -104,15 +104,36 @@ A : First-order function is a function that doesn’t accept another function as
 ### Q : What is a strict mode in javascript
 A : Strict Mode is a new feature in ECMAScript 5 that allows you to place a program, or a function, in a “strict” operating context. This way it prevents certain actions from being taken and throws more exceptions. The literal expression "use strict"; instructs the browser to use the javascript code in the Strict mode.
 
-
-
 ### Q : Different Types of Loops in JavaScript
 A : 
 * while — loops through a block of code as long as the condition specified evaluates to true.
+```while (i < 10) {
+  text += "The number is " + i;
+  i++;
+}```
+
 * do…while — loops through a block of code once; then the condition is evaluated. If the condition is true, the statement is repeated as long as the specified condition is true.
+```do {
+  text += "The number is " + i;
+  i++;
+}
+while (i < 10);```
+
 * for — loops through a block of code until the counter reaches a specified number.
+```for (let i = 0; i < cars.length; i++) {
+  text += cars[i] + "<br>";
+}```
+
 * for…in — loops through the properties of an object.
+```for (key in object) {
+  // code block to be executed
+}```
+
 * for…of — loops over iterable objects such as arrays, strings, etc.
+```let text = "";
+for (let x of cars) {
+  text += x;
+}```
 
 ### Q : What is event bubbling and capturing?
 A : Event bubbling and capturing are two ways of event propagation
@@ -565,6 +586,73 @@ false
 
 ### https://stackoverflow.com/questions/17502948/nexttick-vs-setimmediate-visual-explanatio
 
+### Q : Debouncing and Throttling in JavaScript
+A : DEBOUNCING
+Debounce function limits the execution of a function call and waits for a certain amount of time before running it again.
+
+Debouncing is a programming practice used to ensure that time-consuming tasks do not fire so often, that it stalls the performance of the web page. The debounced function will ignore all calls to it until the calls have stopped for a specified time period. Only then will it call the original function.
+Debouncing forces a function to wait a certain amount of time before running again. In other words, it limits the rate at which a function gets invoked.
+
+Implementing Debounce:
+The general idea for debouncing is-
+1) Start with 0 timeout.
+2) If the debounced function is called again, reset the timer to the specified delay.
+3) In case of timeout, call the debounced function.
+Thus every call to a debounce function resets the timer and delays the call.
+
+```
+const debounce = function(func, delay){
+      let timer;
+      return function () {     //anonymous function
+        const context = this; 
+	const args = arguments;
+	clearTimeout(timer); 
+	timer = setTimeout(()=> {
+	    func.apply(context, args)
+	},delay);
+       }
+}```
+
+Throttling
+
+Throttling or sometimes is also called throttle function is a practice used in websites. To throttle a function means to ensure that the function is called at most once in a specified time period (for instance, once every 10 seconds). This means throttling will prevent a function from running if it has run “recently”. Throttling also ensures a function is run regularly at a fixed rate.
+Throttling is used to call a function after every millisecond or a particular interval of time only the first click is executed immediately.
+
+Implementing Throttle:
+Throttle can be a little taxing as its desired behavior has different interpretations. Let’s start by limiting the rate at which we execute a function.
+Gaming — In action games, the user often performs a key action by pushing a button (example: shooting, punching). But, as any gamer knows, users often press the buttons much more than is necessary, probably due to the excitement and intensity of the action. So the user might hit “Punch” 10 times in 5 seconds, but the game character can only throw one punch in one second. In such a situation, it makes sense to throttle the action. In this case, throttling the “Punch” action to one second would ignore the second button press each second.
+
+Scroll event handler — Another application of throttling is in content-loading webpages like Facebook and Twitter where the user keeps on scrolling. In these scenarios, if the scroll event is fired too frequently, there might be a performance impact, as it contains lots of videos and images. Thus the scroll event must make use of throttling.
+
+1. Throttling a button click so we can’t spam click
+2. Throttling an API call
+3. Throttling a mousemove/touchmove event handler
+~~~
+1) Debouncing is a technique where we can monitor the time delay of user action and once that delay reaches our predetermined threshold we can can make the function call.
+
+2) Throttling is a technique where we make the function call in a predetermined time interval irrespective of continuous user actions.
+
+3) Even though both debouncing and throttling seems like similar, both have their own use-cases. It’s not recommended to use throttling logic in search bar and we we cannot use debouncing in shooting game scenario or browser resizing or onScroll events.
+
+Throttling or sometimes is also called throttle function is a practice used in websites. Throttling is used to call a function after every millisecond or a particular interval of time only the first click is executed immediately.
 
 
+### Q : call, apply and bind in JavaScript
+A : ```
+var obj = {
+ num: 2
+}
+
+var add = function(a,b,c){
+ return this.num + a + b + c
+}
+
+add.call(obj, 1,2,3)
+add.apply(obj, [1,2,3])
+var bound = add.bind(obj)
+bound(1,2,3)
+
+* call method invokes the function with 1st argument as context object and further comma separated arguments which the function can directly consume.
+* apply is exactly same as call method, the only difference is it takes the 2nd argument as array list of the parameters.
+* bind method is similar to the call method but it does not invokes the function, rather gives you the copy of exactly same function, which can be invoked later.
 
