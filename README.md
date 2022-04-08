@@ -444,7 +444,8 @@ A :
 ### Q : What is memoization?
 A : Memoization is an optimization technique that speeds up applications by storing the results of expensive function calls and returning the cached result when the same inputs are supplied again.
 Memoization is used for expensive function calls but in the following example, we are considering a simple function for understanding the concept of memoization better.
-```javascript
+```
+javascript
 function memoizedAddTo256(){
   var cache = {};
 
@@ -471,7 +472,8 @@ Although using memoization saves time, it results in larger consumption of memor
 ### Q : What is a Temporal Dead Zone?
 A : Temporal Dead Zone is a behaviour that occurs with variables declared using let and const keywords.
 It is a behaviour where we try to access a variable before it is initialized.
-```javascript
+```
+javascript
 x = 23; // Gives reference error
 
 let x;
@@ -488,7 +490,8 @@ anotherRandomFunc();
 A : In Javascript, functions are values ( first-class citizens ). This means that they can be assigned to a variable and/or passed as a value. 
 A function that accepts and/or returns another function is called a higher-order function. The map function is one of the many higher-order functions built into the language. sort, reduce, filter, forEach are other examples of higher-order functions built into the language.
 For example, the map function on arrays is a higher order function. The map function takes a function as an argument.
-```javascript
+```
+javascript
 const double = n => n * 2
 [1, 2, 3, 4].map(double) // [ 2, 4, 6, 8 ]
 --- OR ---
@@ -621,7 +624,8 @@ const debounce = function(func, delay){
 	    func.apply(context, args)
 	},delay);
        }
-}```
+}
+```
 
 Throttling
 
@@ -648,7 +652,8 @@ Throttling or sometimes is also called throttle function is a practice used in w
 
 
 ### Q : call, apply and bind in JavaScript
-A : ```
+A : 
+```
 var obj = {
  num: 2
 }
@@ -661,6 +666,7 @@ add.call(obj, 1,2,3)
 add.apply(obj, [1,2,3])
 var bound = add.bind(obj)
 bound(1,2,3)
+```
 
 * call method invokes the function with 1st argument as context object and further comma separated arguments which the function can directly consume.
 * apply is exactly same as call method, the only difference is it takes the 2nd argument as array list of the parameters.
