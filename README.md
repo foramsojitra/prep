@@ -107,33 +107,43 @@ A : Strict Mode is a new feature in ECMAScript 5 that allows you to place a prog
 ### Q : Different Types of Loops in JavaScript
 A : 
 * while — loops through a block of code as long as the condition specified evaluates to true.
-```while (i < 10) {
-  text += "The number is " + i;
-  i++;
-}```
-
-* do…while — loops through a block of code once; then the condition is evaluated. If the condition is true, the statement is repeated as long as the specified condition is true.
-```do {
+```
+while (i < 10) {
   text += "The number is " + i;
   i++;
 }
-while (i < 10);```
+```
+
+* do…while — loops through a block of code once; then the condition is evaluated. If the condition is true, the statement is repeated as long as the specified condition is true.
+```
+do {
+  text += "The number is " + i;
+  i++;
+}
+while (i < 10);
+```
 
 * for — loops through a block of code until the counter reaches a specified number.
-```for (let i = 0; i < cars.length; i++) {
+```
+for (let i = 0; i < cars.length; i++) {
   text += cars[i] + "<br>";
-}```
+}
+```
 
 * for…in — loops through the properties of an object.
-```for (key in object) {
+```
+for (key in object) {
   // code block to be executed
-}```
+}
+```
 
 * for…of — loops over iterable objects such as arrays, strings, etc.
-```let text = "";
+```
+let text = "";
 for (let x of cars) {
   text += x;
-}```
+}
+```
 
 ### Q : What is event bubbling and capturing?
 A : Event bubbling and capturing are two ways of event propagation
