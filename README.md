@@ -10,7 +10,14 @@ JavaScript is a dynamically typed language. In a dynamically typed language, the
 JavaScript is a dynamically typed language. In a dynamically typed language, the type of a variable is checked during run-time in contrast to statically typed language, where the type of a variable is checked during compile-time
 
 ### Q : Difference between "var", "let" and "const"
-A : var is there from the begining of the js, let and const introduced in ES6 all of this can be used for variable declaration. 
+A : 
+var	let	const
+The scope of a var variable is functional scope.	   The scope of a let variable is block scope.	     The scope of a const variable is block scope.
+It can be updated and re-declared into the scope.	  It can be updated but cannot be re-declared into the scope.	It cannot be updated or re-declared into the scope.
+It can be declared without initialization.	It can be declared without initialization.	It cannot be declared without initialization.
+It can be accessed without initialization as its default value is “undefined”.	It cannot be accessed without initialization, as it returns an error.	It cannot be accessed without initialization, as it cannot be declared without initialization.
+
+var is there from the begining of the js, let and const introduced in ES6 all of this can be used for variable declaration. 
 var declarations are globally scoped or function/locally scoped. 
 var variables can be re-declared and updated : 
  ```javascript
