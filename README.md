@@ -4,10 +4,46 @@
 # Javascript
 
 ### Q : What is js?
-A : JavaScript is a programming language commonly used in web development. It was originally developed by Netscape as a means to add dynamic and interactive elements to websites.JavaScript is a synchronous, blocking, single-threaded language.
+A : JavaScript is a programming language commonly used in web development. It was originally developed by Netscape as a means to add dynamic and interactive elements to websites.
+JavaScript is a synchronous, blocking, single-threaded language.
 JavaScript is a dynamically typed language. In a dynamically typed language, the type of a variable is checked during run-time in contrast to statically typed language, where the type of a variable is checked during compile-time.
 
 JavaScript is a dynamically typed language. In a dynamically typed language, the type of a variable is checked during run-time in contrast to statically typed language, where the type of a variable is checked during compile-time
+
+### Q : What are the possible ways to create objects in JavaScript
+A : 
+1. Object constructor:
+```var object = new Object();```
+
+2. Object's create method:
+```var object = Object.create(null);```
+
+3. Object literal syntax:
+```var object = {
+     name: "Sudheer"
+     age: 34
+};```
+
+4. Function constructor:
+```function Person(name) {
+  this.name = name;
+  this.age = 21;
+}
+var object = new Person("Sudheer");```
+
+5. Function constructor with prototype:
+```function Person() {}
+Person.prototype.name = "Sudheer";
+var object = new Person();```
+
+6. ES6 Class syntax
+```class Person {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+var object = new Person("Sudheer");``` 
 
 ### Q : Difference between "var", "let" and "const"
 A : 
