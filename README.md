@@ -19,31 +19,39 @@ A :
 ```var object = Object.create(null);```
 
 3. Object literal syntax:
-```var object = {
+```
+var object = {
      name: "Sudheer"
      age: 34
-};```
+};
+```
 
 4. Function constructor:
-```function Person(name) {
+```
+function Person(name) {
   this.name = name;
   this.age = 21;
 }
-var object = new Person("Sudheer");```
+var object = new Person("Sudheer");
+```
 
 5. Function constructor with prototype:
-```function Person() {}
+```
+function Person() {}
 Person.prototype.name = "Sudheer";
-var object = new Person();```
+var object = new Person();
+```
 
 6. ES6 Class syntax
-```class Person {
+```
+class Person {
   constructor(name) {
     this.name = name;
   }
 }
 
-var object = new Person("Sudheer");``` 
+var object = new Person("Sudheer");
+``` 
 
 ### Q : Difference between "var", "let" and "const"
 A : 
