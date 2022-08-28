@@ -822,9 +822,9 @@ Throttling or sometimes is also called throttle function is a practice used in w
 
 ###Q : What are the differences between cookie, local storage and session storage
 A : 
-| Feature     | Cookie | Local storage      | Session storage |
-| ----------- | ----------- | ----------- | ----------- |
-| Accessed on client or server side | Both server-side & client-side | client-side only | client-side only |
-| Paragraph   | Text        | Paragraph   | Text        |
+| Feature     			          | Cookie 			   | Local storage      | Session storage  |
+| ----------- 				  | -----------                    | ----------- 	| ----------- 	   |
+| Accessed on client or server side       | Both server-side & client-side | client-side only   | client-side only |
+| size				          | 4KB	        		   | 5 MB	   	| 5 MB        	   |
 
 
