@@ -10,239 +10,6 @@ JavaScript is a dynamically typed language. In a dynamically typed language, the
 
 JavaScript is a dynamically typed language. In a dynamically typed language, the type of a variable is checked during run-time in contrast to statically typed language, where the type of a variable is checked during compile-time
 
-### Q : What are the possible ways to create objects in JavaScript
-A : 
-1. Object constructor:
-```var object = new Object();```
-
-2. Object's create method:
-```var object = Object.create(null);```
-
-3. Object literal syntax:
-```
-var object = {
-     name: "Sudheer"
-     age: 34
-};
-```
-
-4. Function constructor:
-```
-function Person(name) {
-  this.name = name;
-  this.age = 21;
-}
-var object = new Person("Sudheer");
-```
-
-5. Function constructor with prototype:
-```
-function Person() {}
-Person.prototype.name = "Sudheer";
-var object = new Person();
-```
-
-6. ES6 Class syntax
-```
-class Person {
-  constructor(name) {
-    this.name = name;
-  }
-}
-
-var object = new Person("Sudheer");
-``` 
-
-### Q : what is the diff between deep cloning and shallow cloning
-A : In Shallow copy, a copy of the original object is stored and only the reference address is finally copied. In Deep copy, the copy of the original object and the repetitive copies both are stored.
-
-A deep copying means that value of the new variable is disconnected from the original variable while a shallow copy means that some values are still connected to the original variable.
-
-For Deep clone use lodash lobrary
-```_.cloneDeep(object)```
-
-or use ... operator
-```var a = { ...obj }```
-
-or can use var cloned = JSON.parse(JSON.stringify(obj));  but it looses all undefined and function and converts it to null value
-
-shallow cloning is just like assign value to var like let a = obj;
-
-
-### Q : call, apply and bind in JavaScript
-A : 
-```
-var obj = {
- num: 2
-}
-
-var add = function(a,b,c){
- return this.num + a + b + c
-}
-
-add.call(obj, 1,2,3)
-add.apply(obj, [1,2,3])
-var bound = add.bind(obj)
-bound(1,2,3)
-```
-
-* call method invokes the function with 1st argument as context object and further comma separated arguments which the function can directly consume.
-* apply is exactly same as call method, the only difference is it takes the 2nd argument as array list of the parameters.
-* bind method is similar to the call method but it does not invokes the function, rather gives you the copy of exactly same function, which can be invoked later.
-
-where it's used
-
- apply() when you want to invoke the function immediately, and modify the context. Call/apply call the function immediately, whereas bind returns a function that, when later executed, will have the correct context set for calling the original function.
-
-The call, bind and apply methods can be used to set the this keyword independent of how a function is called. The bind method creates a copy of the function and sets the this keyword, while the call and apply methods sets the this keyword and calls the function immediately.
-
-
-### Q : Difference between "var", "let" and "const"
-A : 
-var	let	const
-The scope of a var variable is functional scope.	   The scope of a let variable is block scope.	     The scope of a const variable is block scope.
-It can be updated and re-declared into the scope.	  It can be updated but cannot be re-declared into the scope.	It cannot be updated or re-declared into the scope.
-It can be declared without initialization.	It can be declared without initialization.	It cannot be declared without initialization.
-It can be accessed without initialization as its default value is “undefined”.	It cannot be accessed without initialization, as it returns an error.	It cannot be accessed without initialization, as it cannot be declared without initialization.
-
-var is there from the begining of the js, let and const introduced in ES6 all of this can be used for variable declaration. 
-var declarations are globally scoped or function/locally scoped. 
-var variables can be re-declared and updated : 
- ```javascript
-      var a = 1;
-      var a = 2; 
-        OR
-      var a = 1;
-      a = 2;
---------------------
-  function newFunction() {
-  if(true){
-          var a = "hello";
-      }
-  console.log(a);
-  }
-result will be => hello
---------------------
-console.log(a);
-      var a = 1;
- this code will interpreted as 
-    var a;
-    console.log(a); // a is undefined
-    a = 1;
-```
-
-let has a block scope
-```javascript
-  function newFunction() {
-  if(true){
-          let a = "hello";
-      }
-  console.log(a);
-  }
-result will be => VM250:5 Uncaught ReferenceError: a is not defined
-```
-* var declarations are globally scoped or function scoped while let and const are block scoped.
-* var variables can be updated and re-declared within its scope; let variables can be updated but not re-declared; const variables can neither be updated nor re-declared.
-* They are all hoisted to the top of their scope. But while var variables are initialized with undefined, let and const variables are not initialized.
-* While var and let can be declared without being initialized, const must be initialized during declaration.
-
-### Q : JS array method
-A : 
-The pop() method removes the last element from an array. The pop() method returns the value that was "popped out".
-
-The push() method adds a new element to an array (at the end).The push() method returns the new array length.
-
-The shift() method removes the first array element and "shifts" all other elements to a lower index.The shift() method returns the value that was "shifted out".
-
-The unshift() method adds a new element to an array (at the beginning), and "unshifts" older elements.The unshift() method returns the new array length.
-
-The concat() method creates a new array by merging (concatenating) existing arrays, The concat() method does not change the existing arrays. It always returns a new array.The concat() method can take any number of array arguments.
-
-Splicing and Slicing Arrays :
-The splice() method can be used to add new items to an array
-
-```
-const fruits = ["Banana", "Orange", "Apple", "Mango"];
-fruits.splice(2, 0, "Lemon", "Kiwi");
-```
-The first parameter (2) defines the position where new elements should be added (spliced in).
-
-The second parameter (0) defines how many elements should be removed.
-
-The rest of the parameters ("Lemon" , "Kiwi") define the new elements to be added.
-
-The splice() method returns an array with the deleted items:
-
-The slice() method slices out a piece of an array into a new array.
-
-This example slices out a part of an array starting from array element 1 ("Orange"):
-
-The slice() method creates a new array.
-
-The slice() method does not remove any elements from the source array.
-
-### Q : What is scope in javascript
-A : Scope is the accessibility of variables, functions, and objects in some particular part of your code during runtime. In other words, scope determines the visibility of variables and other resources in areas of your code.
-
-### Q : What is a first order function
-A : First-order function is a function that doesn’t accept another function as an argument and doesn’t return a function as its return value.
-
-```const firstOrder = () => console.log ('I am a first order function!');```
-
-### Q : What is a strict mode in javascript
-A : Strict Mode is a new feature in ECMAScript 5 that allows you to place a program, or a function, in a “strict” operating context. This way it prevents certain actions from being taken and throws more exceptions. The literal expression "use strict"; instructs the browser to use the javascript code in the Strict mode.
-
-### Q : Different Types of Loops in JavaScript
-A : 
-* while — loops through a block of code as long as the condition specified evaluates to true.
-```
-while (i < 10) {
-  text += "The number is " + i;
-  i++;
-}
-```
-
-* do…while — loops through a block of code once; then the condition is evaluated. If the condition is true, the statement is repeated as long as the specified condition is true.
-```
-do {
-  text += "The number is " + i;
-  i++;
-}
-while (i < 10);
-```
-
-* for — loops through a block of code until the counter reaches a specified number.
-```
-for (let i = 0; i < cars.length; i++) {
-  text += cars[i] + "<br>";
-}
-```
-
-* for…in — loops through the properties of an object.
-```
-for (key in object) {
-  // code block to be executed
-}
-```
-
-* for…of — loops over iterable objects such as arrays, strings, etc.
-```
-let text = "";
-for (let x of cars) {
-  text += x;
-}
-```
-
-### Q : What is event bubbling and capturing?
-A : Event bubbling and capturing are two ways of event propagation
-
-When an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other ancestors.
-If you have event on body and some parent and child element than when you click on child element it will execute event on the child firstevent bubbling execute the lowest order first so child element's event will execute first than it will check if parent element has any event if it has than it will be executed and after that if body element has any event that will be executed.
-
-* Events first are captured down to deepest target, then bubble up. In IE<9 they only bubble.
-* All handlers work on bubbling stage excepts addEventListener with last argument true, which is the only way to catch the event on capturing stage.
-* Bubbling/capturing can be stopped by event.cancelBubble=true (IE) or event.stopPropagation() for other browsers.
-
 ### Q : What are the different data types present in javascript?
 A : There are two types of data types in JavaScript.
 ~~~
@@ -300,6 +67,292 @@ A : == compares value and === compares vlue and type
 
 ### Q : Difference between null and undefined
 A : both of them is an empty value but difference is that when you define a variable and not assign any value it automatically so you don't have to assign value undefine js do it for you. In case of null you have to assugn value null to variable. Typeof undefined will be undefined while typeof null will be object.
+
+### Q : What are the possible ways to create objects in JavaScript
+A : 
+1. Object constructor:
+```var object = new Object();```
+
+2. Object's create method:
+```var object = Object.create(null);```
+
+3. Object literal syntax:
+```
+var object = {
+     name: "Sudheer"
+     age: 34
+};
+```
+
+4. Function constructor:
+```
+function Person(name) {
+  this.name = name;
+  this.age = 21;
+}
+var object = new Person("Sudheer");
+```
+
+5. Function constructor with prototype:
+```
+function Person() {}
+Person.prototype.name = "Sudheer";
+var object = new Person();
+```
+
+6. ES6 Class syntax
+```
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+var object = new Person("Sudheer");
+``` 
+
+### Q : what is the diff between deep cloning and shallow cloning
+A : In Shallow copy, a copy of the original object is stored and only the reference address is finally copied. In Deep copy, the copy of the original object and the repetitive copies both are stored.
+
+A deep copying means that value of the new variable is disconnected from the original variable while a shallow copy means that some values are still connected to the original variable.
+
+For Deep clone use lodash lobrary
+```_.cloneDeep(object)```
+
+or use ... operator
+```var a = { ...obj }```
+
+or var student2 = Object.assign( {}, obj);
+
+or can use var cloned = JSON.parse(JSON.stringify(obj));  but it looses all undefined and function and converts it to null value
+
+shallow cloning is just like assign value to var like let a = obj;
+
+
+### Q : call, apply and bind in JavaScript
+A : 
+```
+var obj = {
+ num: 2
+}
+
+var add = function(a,b,c){
+ return this.num + a + b + c
+}
+
+add.call(obj, 1,2,3)
+add.apply(obj, [1,2,3])
+var bound = add.bind(obj)
+bound(1,2,3)
+```
+
+* call method invokes the function with 1st argument as context object and further comma separated arguments which the function can directly consume.
+* apply is exactly same as call method, the only difference is it takes the 2nd argument as array list of the parameters.
+* bind method is similar to the call method but it does not invokes the function, rather gives you the copy of exactly same function, which can be invoked later.
+
+where it's used
+
+ apply() when you want to invoke the function immediately, and modify the context. Call/apply call the function immediately, whereas bind returns a function that, when later executed, will have the correct context set for calling the original function.
+
+The call, bind and apply methods can be used to set the this keyword independent of how a function is called. The bind method creates a copy of the function and sets the this keyword, while the call and apply methods sets the this keyword and calls the function immediately.
+
+
+### Q : Difference between "var", "let" and "const"
+A : 
+		var							let						const
+The scope of a var variable is functional scope.     The scope of a let variable is block scope.	     The scope of a const variable is block scope.
+It can be updated and re-declared into the scope.  It can be updated but cannot be re-declared into the scope.	It cannot be updated or re-declared into the scope.
+It can be declared without initialization.	It can be declared without initialization.	It cannot be declared without initialization.
+It can be accessed without initialization as its default value is “undefined”.	It cannot be accessed without initialization, as it returns an error.	It cannot be accessed without initialization, as it cannot be declared without initialization.
+
+var is there from the begining of the js, let and const introduced in ES6 all of this can be used for variable declaration. 
+var declarations are globally scoped or function/locally scoped. 
+var variables can be re-declared and updated : 
+ ```javascript
+      var a = 1;
+      var a = 2; 
+        OR
+      var a = 1;
+      a = 2;
+--------------------
+  function newFunction() {
+  if(true){
+          var a = "hello";
+      }
+  console.log(a);
+  }
+result will be => hello
+--------------------
+console.log(a);
+      var a = 1;
+ this code will interpreted as 
+    var a;
+    console.log(a); // a is undefined
+    a = 1;
+```
+
+let has a block scope
+```javascript
+  function newFunction() {
+  if(true){
+          let a = "hello";
+      }
+  console.log(a);
+  }
+result will be => VM250:5 Uncaught ReferenceError: a is not defined
+```
+* var declarations are globally scoped or function scoped while let and const are block scoped.
+* var variables can be updated and re-declared within its scope; let variables can be updated but not re-declared; const variables can neither be updated nor re-declared.
+* They are all hoisted to the top of their scope. But while var variables are initialized with undefined, let and const variables are not initialized.
+* While var and let can be declared without being initialized, const must be initialized during declaration.
+
+### Q : JS array method
+A : 
+The pop() method removes the last element from an array. The pop() method returns the value that was "popped out".
+```
+let dailyActivities = ['work', 'eat', 'sleep', 'exercise'];
+
+dailyActivities.pop();
+console.log(dailyActivities); // ['work', 'eat', 'sleep']
+
+// remove the last element from ['work', 'eat', 'sleep']
+const removedElement = dailyActivities.pop();
+
+//get removed element
+console.log(removedElement); // 'sleep'
+console.log(dailyActivities);  // ['work', 'eat']
+```
+
+The push() method adds a new element to an array (at the end).The push() method returns the new array length.
+
+The shift() method removes the first array element and "shifts" all other elements to a lower index.The shift() method returns the value that was "shifted out".
+```
+let dailyActivities = ['work', 'eat', 'sleep'];
+
+// remove the first element
+dailyActivities.shift();
+
+console.log(dailyActivities); // ['eat', 'sleep']
+```
+
+The unshift() method adds a new element to an array (at the beginning), and "unshifts" older elements.The unshift() method returns the new array length.
+
+The concat() method creates a new array by merging (concatenating) existing arrays, The concat() method does not change the existing arrays. It always returns a new array.The concat() method can take any number of array arguments.
+
+Splicing and Slicing Arrays :
+The splice() method can be used to add new items to an array
+
+```
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2, 0, "Lemon", "Kiwi");
+```
+
+The first parameter (2) defines the position where new elements should be added (spliced in).
+
+The second parameter (0) defines how many elements should be removed.
+
+The rest of the parameters ("Lemon" , "Kiwi") define the new elements to be added.
+
+The splice() method returns an array with the deleted items:
+
+The slice() method slices out a piece of an array into a new array.
+```
+let dailyActivities = ['sleep', 'work', 'exercise']
+let newRoutine = ['eat'];
+
+const newDailyActivities = dailyActivities.slice(1);
+console.log(newDailyActivities); // [ 'sleep', 'work']
+```
+
+This example slices out a part of an array starting from array element 1 ("Orange"):The slice() method creates a new array.The slice() method does not remove any elements from the source array.
+
+### Q : Map, Filter and Reduce
+A : 
+* Map
+The map() method is used for creating a new array from an existing one, applying a function to each one of the elements of the first array.
+
+```
+const numbers = [1, 2, 3, 4];
+const doubled = numbers.map(item => item * 2);
+console.log(doubled); // [2, 4, 6, 8]
+```
+
+* Filter
+The filter() method takes each element in an array and it applies a conditional statement against it. If this conditional returns true, the element gets pushed to the output array. If the condition returns false, the element does not get pushed to the output array.
+
+```
+const numbers = [1, 2, 3, 4];
+const evens = numbers.filter(item => item % 2 === 0);
+console.log(evens); // [2, 4]
+```
+
+* Reduce
+The reduce() method reduces an array of values down to just one value. To get the output value, it runs a reducer function on each element of the array.
+
+```
+const numbers = [1, 2, 3, 4];
+const sum = numbers.reduce(function (result, item) {
+  return result + item;
+}, 0);
+console.log(sum); // 10
+```
+
+### Q : What is scope in javascript
+A : Scope is the accessibility of variables, functions, and objects in some particular part of your code during runtime. In other words, scope determines the visibility of variables and other resources in areas of your code.
+
+### Q : What is a strict mode in javascript
+A : Strict Mode is a new feature in ECMAScript 5 that allows you to place a program, or a function, in a “strict” operating context. This way it prevents certain actions from being taken and throws more exceptions. The literal expression "use strict"; instructs the browser to use the javascript code in the Strict mode.
+
+### Q : Different Types of Loops in JavaScript
+A : 
+* while — loops through a block of code as long as the condition specified evaluates to true.
+```
+while (i < 10) {
+  text += "The number is " + i;
+  i++;
+}
+```
+
+* do…while — loops through a block of code once; then the condition is evaluated. If the condition is true, the statement is repeated as long as the specified condition is true.
+```
+do {
+  text += "The number is " + i;
+  i++;
+}
+while (i < 10);
+```
+
+* for — loops through a block of code until the counter reaches a specified number.
+```
+for (let i = 0; i < cars.length; i++) {
+  text += cars[i] + "<br>";
+}
+```
+
+* for…in — loops through the properties of an object.
+```
+for (key in object) {
+  // code block to be executed
+}
+```
+
+* for…of — loops over iterable objects such as arrays, strings, etc.
+```
+let text = "";
+for (let x of cars) {
+  text += x;
+}
+```
+
+### Q : What is event bubbling and capturing?
+A : Event bubbling and capturing are two ways of event propagation
+
+When an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other ancestors.
+If you have event on body and some parent and child element than when you click on child element it will execute event on the child firstevent bubbling execute the lowest order first so child element's event will execute first than it will check if parent element has any event if it has than it will be executed and after that if body element has any event that will be executed.
+
+* Events first are captured down to deepest target, then bubble up. In IE<9 they only bubble.
+* All handlers work on bubbling stage excepts addEventListener with last argument true, which is the only way to catch the event on capturing stage.
+* Bubbling/capturing can be stopped by event.cancelBubble=true (IE) or event.stopPropagation() for other browsers.
 
 ### Q : What is use of arrow 
 A : arrow functions were introduced in ES6.
@@ -580,6 +633,12 @@ function anotherRandomFunc(){
 }
 anotherRandomFunc();
 ```
+
+### Q : What is a first order function
+A : First-order function is a function that doesn’t accept another function as an argument and doesn’t return a function as its return value.
+
+```const firstOrder = () => console.log ('I am a first order function!');```
+
 ### Q : What is Higher-Order Functions?
 A : In Javascript, functions are values ( first-class citizens ). This means that they can be assigned to a variable and/or passed as a value. 
 A function that accepts and/or returns another function is called a higher-order function. The map function is one of the many higher-order functions built into the language. sort, reduce, filter, forEach are other examples of higher-order functions built into the language.
