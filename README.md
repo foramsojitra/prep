@@ -824,7 +824,10 @@ Scroll event handler — Another application of throttling is in content-loading
 Throttling or sometimes is also called throttle function is a practice used in websites. Throttling is used to call a function after every millisecond or a particular interval of time only the first click is executed immediately.
 ~~~
 
-###Q : What are the differences between cookie, local storage and session storage
+Debouncing is a technique where we can monitor the time delay of user action and once that delay reaches our predetermined threshold we can can make the function call. Throttling is a technique where we make the function call in a predetermined time interval irrespective of continuous user actions.
+
+
+### Q : What are the differences between cookie, local storage and session storage
 A : 
 | Feature     			          | Cookie 			   | Local storage      | Session storage  |
 | ----------- 				  | -----------                    | ----------- 	| ----------- 	   |
@@ -833,7 +836,7 @@ A :
 
 LocalStorage is the same as SessionStorage but it persists the data even when the browser is closed and reopened(i.e it has no expiration time) whereas in sessionStorage data gets cleared when the page session ends.
 
-###Q : What is the use of setTimeout?
+### Q : What is the use of setTimeout?
 A : The setTimeout() method is used to call a function or evaluate an expression after a specified number of milliseconds. For example, let's log a message after 2 seconds using setTimeout method,
 ```
 setTimeout(function () {
@@ -841,7 +844,7 @@ setTimeout(function () {
 }, 2000);
 ```
 
-###Q : What is the use of setInterval?
+### Q : What is the use of setInterval?
 A : The setInterval() method is used to call a function or evaluate an expression at specified intervals (in milliseconds). For example, let's log a message after 2 seconds using setInterval method,
 
 ```
@@ -858,4 +861,370 @@ setImmediate(function () {
 });
 ```
 
+--------------------------------------------------------------------------------------------------------------------------------------------------
 
+# Node.js and REST APIs
+
+### Q : REPL Function
+A : 
+Read − Reads user's input, parses the input into JavaScript data-structure, and stores in memory.
+
+Eval − Takes and evaluates the data structure.
+
+Print − Prints the result.
+
+Loop − Loops the above command until the user presses ctrl-c twice.
+
+The REPL feature of Node is very useful in experimenting with Node.js codes and to debug JavaScript codes.
+
+### Q : Node advantage and disadvantage
+A : 
+#### ADVANTAGE
+Asynchronous and Event Driven − All APIs of Node.js library are asynchronous, that is, non-blocking. It essentially means a Node.js based server never waits for an API to return data. The server moves to the next API after calling it and a notification mechanism of Events of Node.js helps the server to get a response from the previous API call.
+
+Very Fast − Being built on Google Chrome's V8 JavaScript Engine, Node.js library is very fast in code execution.
+
+Single Threaded but Highly Scalable − Node.js uses a single threaded model with event looping. Event mechanism helps the server to respond in a non-blocking way and makes the server highly scalable as opposed to traditional servers which create limited threads to handle requests. Node.js uses a single threaded program and the same program can provide service to a much larger number of requests than traditional servers like Apache HTTP Server.
+
+No Buffering − Node.js applications never buffer any data. These applications simply output the data in chunks.
+
+#### Disadvantage
+Reduces performance when handling Heavy Computing Tasks.
+
+Node.js invites a lot of code changes due to Unstable API.
+
+Node.js Asynchronous Programming Model makes it difficult to maintain code.
+
+Choose Wisely – Lack of Library Support can Endanger your Code.
+
+Node. js doesn't support multi-threaded programming yet. It is able to serve way more complicated applications than Ruby, but it's not suitable for performing long-running calculations. Heavy computations block the incoming requests, which can lead to decrease of performance .
+
+
+### Q : where it's used?
+A : 
+* Real-time conversations
+* Complex SPAs for the Internet of Things (Single-Page Applications)
+* Tools for real-time collaboration
+* Applications for streaming
+* Architecture of microservices
+* JSON APIs based Applications
+
+### Q : cors
+A : Cross-Origin Resource Sharing (CORS) headers allow apps running in the browser to make requests to servers on different domains (also known as origins). CORS headers are set on the server side - the HTTP server is responsible for indicating that a given HTTP request can be cross-origin. CORS defines a way in which a browser and server can interact and determine whether or not it is safe to allow a cross-origin request.
+
+### Q : How node.js prevents blocking code?
+A : Blocking vs Non-blocking
+
+Blocking is when the execution of additional JavaScript in the Node.js process must wait until a non-JavaScript operation completes. This happens because the event loop is unable to continue running JavaScript while a blocking operation is occurring.
+
+Synchronous methods in the Node.js standard library that use libuv are the most commonly used blocking operations. Native modules may also have blocking methods. Blocking methods execute synchronously and non-blocking methods execute asynchronously.
+
+```
+// Blocking
+const fs = require('fs');
+const data = fs.readFileSync('/file.md'); // blocks here until file is read
+console.log(data);
+moreWork(); // will run after console.log
+
+// Non-blocking
+const fs = require('fs');
+fs.readFile('/file.md', (err, data) => {
+  if (err) throw err;
+  console.log(data);
+});
+moreWork(); // will run before console.log
+```
+
+### Q : Name the types of API functions in Node.js?
+A : There are two types of API functions in Node.js:
+
+Asynchronous, Non-blocking functions
+Synchronous, Blocking functions
+
+### Q : Streams
+A : 
+* Readable − Stream which is used for read operation.
+
+* Writable − Stream which is used for write operation.
+
+* Duplex − Stream which can be used for both read and write operation.
+
+* Transform − A type of duplex stream where the output is computed based on input.
+
+### Q : Chaining the Streams
+A : Chaining is a mechanism to connect the output of one stream to another stream and create a chain of multiple stream operations. It is normally used with piping operations. Now we'll use piping and chaining to first compress a file and then decompress the same.
+
+The readable.pipe() method in a Readable Stream is used to attach a Writable stream to the readable stream so that it consequently switches into flowing mode and then pushes all the data that it has to the attached Writable
+
+```
+// Accessing fs module
+var fs = require("fs");
+ 
+// Create a readable stream
+var readable = fs.createReadStream('input.txt');
+ 
+// Create a writable stream
+var writable = fs.createWriteStream('output.txt');
+ 
+// Calling pipe method
+readable.pipe(writable);
+ 
+console.log("Program Ended");
+```
+
+Create a js file named main.js with the following code −
+
+```
+var fs = require("fs");
+var zlib = require('zlib');
+
+// Compress the file input.txt to input.txt.gz
+fs.createReadStream('input.txt')
+   .pipe(zlib.createGzip())
+   .pipe(fs.createWriteStream('input.txt.gz'));
+  
+console.log("File Compressed.");
+```
+
+### Q : Node.js - Global Objects
+A : Node. js Global Objects are the objects that are available in all modules. Global Objects are built-in objects that are part of the JavaScript and can be used directly in the application without importing any particular module.
+
+* __filename
+* __dirname
+* console
+* process
+* exports
+* module
+* require()
+
+### Q : Node.js DNS Module
+A : DNS is a node module used to do name resolution facility which is provided by the operating system as well as used to do an actual DNS lookup.
+
+Advantage
+No need for memorising IP addresses – DNS servers provide a nifty solution of converting domain or subdomain names to IP addresses.
+```
+var dns = require('dns');
+var w3 = dns.lookup('w3schools.com', function (err, addresses, family) {
+  console.log(addresses);
+});
+```
+it gives IP of the host
+
+getServers() :	Returns an array containing all IP addresses belonging to the current server
+lookup() : Looks up a hostname. A callback function contains information about the hostname, including it's IP address
+lookupService() : Looks up a address and port. A callback function contains information about the address, such as the hostname
+resolve() : Returns an array of record types belonging to the specified hostname
+
+### Q : What is the preferred method of resolving unhandled exceptions in Node.js?
+A : Unhandled exceptions in Node.js can be caught at the Process level by attaching a handler for uncaughtException event.
+
+```
+process.on('uncaughtException', function(err) {
+    console.log('Caught exception: ' + err);
+});
+```
+
+Process is a global object that provides information about the current Node.js process. Process is a listener function that is always listening to events.
+
+Few events are :
+
+* Exit
+* disconnect
+* unhandledException
+* rejectionHandled
+
+### Q : Event loop and Work Flow
+A : 
+* Node.js is a single-threaded event-driven platform that is capable of running non-blocking, asynchronously programming. These functionalities of Node.js make it memory efficient. The event loop allows Node.js to perform non-blocking I/O operations despite the fact that JavaScript is single-threaded. It is done by assigning operations to the operating system whenever and wherever possible.
+
+* Node.js is an event loop single-threaded language. It can handle concurrent requests with a single thread without blocking it for one request.
+
+## Features of Event Loop:
+
+* Event loop is an endless loop, which waits for tasks, executes them and then sleeps until it receives more tasks.
+* The event loop executes tasks from the event queue only when the call stack is empty i.e. there is no ongoing task.
+* The event loop allows us to use callbacks and promises.
+* The event loop executes the tasks starting from the oldest first.
+
+Libuv implements two extremely important features of node.js  
+
+Event Queue
+Event loop
+Thread pool
+
+Parts of the Node.js architecture
+* Node.js server: The Node.js server receives user requests, processes them, and sends feedback to the users. It is the server-side of the platform.
+
+* Event queue: The event queue helps in request handling. It arranges incoming requests and sends them for processing one after the other.
+
+* Requests: These are the tasks users try to perform on web applications. They are sent to the web application's server.
+
+* Thread pool: These are the number of available threads used to carry out every incoming request by the user.
+
+* Event loop: The event loop receives requests from clients, processes them, and sends them back to the client.
+
+* External resources: These are resources that help perform client requests. The request could be computational or requires data storage.
+
+A request is sent to the server by the client. The request could be to delete data, query data, update data, and so on.
+The request is received by the event queue and kept for processing.
+The events are sent in the order they were received through the event loop. A check is also performed to know if any event requires external resources.
+The event loop processes the request (input/output) output polling and sends the feedback to the client.
+
+## Advantages of using Node.js
+
+Fewer resources are required in the operations carried out in the Node.js server.
+Node.js can handle multiple concurrent requests with ease. This is made possible through the event queue and the thread pool.
+Node.js does not need multiple threads because the event loop helps handle the events one after the other.
+
+
+### Q : Node.js Worker Threads
+A : Worker Threads in Node.js is useful for performing heavy JavaScript tasks. With the help of threads, Worker makes it easy to run javascript codes in parallel making it much faster and efficient. We can do heavy tasks without even disturbing the main thread.
+
+### Q : Child process
+A : Node.js runs in a single-thread mode, but it uses an event-driven paradigm to handle concurrency. It also facilitates creation of child processes to leverage parallel processing on multi-core CPU based systems.
+
+Child processes always have three streams child.stdin, child.stdout, and child.stderr which may be shared with the stdio streams of the parent process.
+
+Node provides child_process module which has the following three major ways to create a child process.
+
+* exec − child_process.exec method runs a command in a shell/console and buffers the output.
+
+* spawn − child_process.spawn launches a new process with a given command.
+
+* fork − The child_process.fork method is a special case of the spawn() to create child processes.
+
+### Q : clustering in node.js
+A : The cluster module provides a way of creating child processes that runs simultaneously and share the same server port. Node.js runs single threaded programming, which is very memory efficient, but to take advantage of computers multi-core systems, the Cluster module allows you to easily create child processes that each runs on their own single thread, to handle the load.
+
+The Node.js Cluster module enables the creation of child processes (workers) that run simultaneously and share the same server port. Each spawned child has its own event loop, memory, and V8 instance. The child processes use IPC (Inter-process communication) to communicate with the parent Node.js process.
+
+Having multiple processes to handle incoming requests means that several requests can be processed simultaneously and if there is a long-running/blocking operation on one worker, the other workers can continue handling other incoming requests — your app won't have come to a standstill until the blocking operation completes.
+
+```
+var cluster = require('cluster');
+var http = require('http');
+var numCPUs = 4;
+
+if (cluster.isMaster) {
+ for (var i = 0; i < numCPUs; i++) {
+  cluster.fork();
+ }
+} else {
+ http.createServer(function(req, res) {
+  res.writeHead(200);
+  res.end('process ' + process.pid + ' says hello!');
+ }).listen(8000);
+}
+```
+
+### Q : Node.js Memory Leak Detectors
+A : Fixing a memory leak is not as straightforward as it may seem. You’ll need to check your codebase to find any issues with your global scope, closures, heap memory, or any other pain points I outlined above.
+
+A quick way to fix Node.js memory leaks in the short term is to restart the app. Make sure to do this first and then dedicate the time to seek out the root cause of the memory leak.
+
+* Memwatch
+* Heapdump
+these tools can work
+
+* Centroid-based Clustering.
+* Density-based Clustering.
+* Distribution-based Clustering.
+* Hierarchical Clustering. 
+
+### REST api
+A : REST represents REpresentational State Transfer; it is a relatively new aspect of writing web API.
+REST is stateless, therefore the SERVER has no state (or session data)
+With a well-applied REST API, the server could be restarted between two calls as every data is passed to the server
+Web service mostly uses POST method to make operations, whereas REST uses GET to access resources
+
+* POST - Create
+
+* PUT - Update/Replace
+
+* Patch - Update/Modify
+
+* Delete - Delete
+
+* Get - Read
+
+Here is a simple description of all: POST is always for creating a resource ( does not matter if it was duplicated ) PUT is for checking if resource exists then update, else create new resource. PATCH is always for updating a resource.
+
+### Q : What are the advantages of PostgreSQL?
+A : Some of the advantages of PostgreSQL are open-source DBMS, community support, ACID compliance, diverse indexing techniques, full-text search, a variety of replication methods, and diversified extension functions, etc.
+
+### Q : What is the name of the process of splitting a large table into smaller pieces in PostgreSQL?
+A : The name of the process of splitting a large table into smaller pieces in PostgreSQL is known as table partitioning.
+
+### Q : What is the maximum size for a table in PostgreSQL?
+A : PostgreSQL provides unlimited user database size, but it doesn't provide an unlimited size for tables. In PostgreSQL, the maximum size for a table is set to 32 TB.
+
+### Q : Which commands are used to control transactions in PostgreSQL?
+A : The following commands are used to control transactions in PostgreSQL:
+
+BEGIN TRANSACTION
+COMMIT
+ROLLBACK
+
+### Q : index POSTGRESQL
+A : An Index is the structure or object by which we can retrieve specific rows or data faster. Indexes can be created using one or multiple columns or by using the partial data depending on your query requirement conditions.
+
+Index will create a pointer to the actual rows in the specified table.
+
+You can create an index by using the CREATE INDEX syntax.
+
+* types 
+
+1. B-tree : The most common and widely used index type is the B-tree index. This is the default index type for the CREATE INDEX command, unless you explicitly mention the type during index creation. 
+
+If the indexed column is used to perform the comparison by using comparison operators such as <, <=, =, >=, and >, then the  Postgres optimizer uses the index created by the B-tree option for the specified column.
+
+2. Hash index : The Hash index can be used only if the equality condition = is being used in the query.
+
+3. GiST
+
+4. SP-GiST
+
+5. GIN
+
+6. BRIN
+
+### Q : What type of NoSQL database MongoDB is?
+A : MongoDB is a document-oriented database. It stores the data in the form of the BSON structure-oriented databases. We store these documents in a collection.
+
+### Q : Explain Namespace?
+A : namespace is the series of the collection name and database name.
+
+### Q : Explain Indexes in MongoDB?
+A : In MongoDB, we use Indexes for executing the queries efficiently; without using Indexes, MongoDB should carry out a collection scan, i.e., scan all the documents of a collection, for selecting the documents which match the query statement. If a suitable index is available for a query, MongoDB will use an index for restricting the number of documents it should examine.
+
+* Single field Index
+* Compound Index
+* Multikey Index
+* Geospatial Indexes
+* Text Index
+* Hash Index
+* Wildcard Index
+
+### Q : What is a replica set?
+A : We can specify the replica as a set of the mongo instances which host a similar data set. In the replica set, one node will be primary, and another one will be secondary. We replicate all the data from the primary to the secondary nodes.
+
+### Q : What are Primary and Secondary Replica sets?
+A : Primary and master nodes are the nodes that can accept writes. MongoDB's replication is 'single-master:' only one node can accept write operations at a time.
+
+Secondary and slave nodes are read-only nodes that replicate from the primary.
+
+### Q : Explain Sharding and Aggregation in MongoDB?
+Aggregation: Aggregations are the activities that handle the data records and give the record results.
+Sharding: Sharding means storing the data on multiple machines.
+
+### Q : What does ObjectId contain?
+ObjectId contains the following:
+
+* Client machine ID
+* Client process ID
+* Byte incremented counter
+* Timestamp
+
+### Q : Explain Vertical Scaling and Horizontal Scaling?
+Vertical Scaling: Vertical Scaling increases storage and CPU resources for expanding the capacity.
+Horizontal Scaling: Horizontal Scaling splits the datasets and circulates the data over multiple shards or servers.
