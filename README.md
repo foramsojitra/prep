@@ -354,8 +354,23 @@ If you have event on body and some parent and child element than when you click 
 * All handlers work on bubbling stage excepts addEventListener with last argument true, which is the only way to catch the event on capturing stage.
 * Bubbling/capturing can be stopped by event.cancelBubble=true (IE) or event.stopPropagation() for other browsers.
 
+
+### Q : What is ECMA Script and How are JavaScript and ECMA Script related?
+ECMA Script are like rules and guideline while Javascript is a scripting language used for web development.
+
+### Q : What are some of the features of ES6?
+A : 
+* Support for constants (also known as “immutable variables”)
+* Block-Scope support for both variables, constants, functions
+* Arrow functions
+* Extended Parameter Handling
+* Template Literals and Extended Literals
+* Spread operator
+* Destructuring Assignment
+
 ### Q : What is use of arrow 
 A : arrow functions were introduced in ES6.
+* An arrow function is a shorter syntax for a function expression and does not have its own this, arguments, super, or new.target. These functions are best suited for non-method functions, and they cannot be used as constructors.
 * Unlike regular functions, arrow functions do not have their own this. The value of this inside an arrow function remains the same throughout the lifecycle of the function and is always bound to the value of this in the closest non-arrow parent function.
 * The handling of this is also different in arrow functions compared to regular functions.
 * In short, with arrow functions there are no binding of this.
@@ -378,6 +393,83 @@ me.thisInRegular();
 ==> result : undefined
              1
 ```
+
+### Q : What is the rest parameter and spread operator?
+A : Both rest parameter and spread operator were introduced in the ES6 version of javascript.
+
+Rest parameter ( … )
+
+It provides an improved way of handling parameters of a function.
+
+Using the rest parameter syntax, we can create functions that can take a variable number of arguments.
+
+Any number of arguments will be converted into an array using the rest parameter.
+
+It also helps in extracting all or some parts of the arguments.
+
+Rest parameter can be used by applying three dots (...) before the parameters.
+
+```
+function extractingArgs(...args){
+  return args[1];
+}
+
+// extractingArgs(8,9,1); // Returns 9
+
+function addAllArgs(...args){
+  let sumOfArgs = 0;
+  let i = 0;
+  while(i < args.length){
+    sumOfArgs += args[i];
+    i++;
+  }
+  return sumOfArgs;
+}
+
+addAllArgs(6, 5, 7, 99); // Returns 117
+addAllArgs(1, 3, 4); // Returns 8
+```
+- Rest parameter should always be used at the last parameter of a function:
+
+Spread operator (…)
+
+Although the syntax of spread operator is exactly the same as the rest parameter, spread operator is used to spread an array, and object literals. We also use spread operators where one or more arguments are expected in a function call.
+
+```
+function addFourNumbers(num1,num2,num3,num4){
+  return num1 + num2 + num3 + num4;
+}
+
+let fourNumbers = [5, 6, 7, 8];
+
+
+addFourNumbers(...fourNumbers);
+// Spreads [5,6,7,8] as 5,6,7,8
+
+let array1 = [3, 4, 5, 6];
+let clonedArray1 = [...array1];
+// Spreads the array into 3,4,5,6
+console.log(clonedArray1); // Outputs [3,4,5,6]
+```
+
+### Q : What is Object Destructuring?
+
+A : Object destructuring is a new way to extract elements from an object or an array.
+
+```
+const classDetails = {
+  strength: 78,
+  benches: 39,
+  blackBoard:1
+}
+
+const {strength:classStrength, benches:classBenches,blackBoard:classBlackBoard} = classDetails;
+
+console.log(classStrength); // Outputs 78
+console.log(classBenches); // Outputs 39
+console.log(classBlackBoard); // Outputs 1
+```
+
 ### Q : Explain “this” keyword
 A : The “this” keyword refers to the object that the function is a property of.
 The value of “this” keyword will always depend on the object that is invoking the function.
@@ -403,6 +495,11 @@ A : type of null is "object" and type of function is "function".
 A : We can create nested functions in JavaScript. Inner function can access variables and parameters of an outer function (however, cannot access arguments object of outer function).
 A JavaScript closure is when an inner function has access to its outer enclosing function's variables and properties. like bwlow example.
 
+A closure is the combination of a function and the lexical environment within which that function was declared. i.e, It is an inner function that has access to the outer or enclosing function’s variables. The closure has three scope chains
+
+* Own scope where variables defined between its curly brackets
+* Outer function’s variables
+* Global variables
 
 Closures help in maintaining the state between function calls without using a global variable.
 
@@ -564,10 +661,17 @@ x + y // Returns "33"
 ```
 ### Q : Explain Hoisting in javascript.
 A : Hoisting is a default behaviour of javascript where all the variable and function declarations are moved on top. This means that irrespective of where the variables and functions are declared, they are moved on top of the scope. The scope can be both local and global.
+
+Hoisting is a JavaScript mechanism where variables, function declarations and classes are moved to the top of their scope before code execution. Remember that JavaScript only hoists declarations, not initialisation. Let's take a simple example of variable hoisting,
+
 ```javascript
 hoistedVariable = 3;
 console.log(hoistedVariable); // outputs 3 even when the variable is declared after it is initialized	
 var hoistedVariable;
+
+console.log(message); //output : undefined
+var message = "The variable Has been hoisted";
+
 ```
 To avoid hoisting, you can run javascript in strict mode by using “use strict” on top of the code.
 
@@ -575,18 +679,6 @@ To avoid hoisting, you can run javascript in strict mode by using “use strict�
 A : true
 it counts from left to right and  6<7 is true and true means 1 so after 1st comparision it become 1<7 which is true so answer will be true.
 
-### Q : What is ECMA Script and How are JavaScript and ECMA Script related?
-ECMA Script are like rules and guideline while Javascript is a scripting language used for web development.
-
-### Q : What are some of the features of ES6?
-A : 
-* Support for constants (also known as “immutable variables”)
-* Block-Scope support for both variables, constants, functions
-* Arrow functions
-* Extended Parameter Handling
-* Template Literals and Extended Literals
-* Spread operator
-* Destructuring Assignment
 
 ### Q : What is memoization?
 A : Memoization is an optimization technique that speeds up applications by storing the results of expensive function calls and returning the cached result when the same inputs are supplied again.
@@ -661,81 +753,6 @@ DOM is a programming interface for HTML and XML documents.
 When the browser tries to render a HTML document, it creates an object based on the HTML document called DOM. Using this DOM, we can manipulate or change various elements inside the HTML document.
 
 
-### Q : What is the rest parameter and spread operator?
-A : Both rest parameter and spread operator were introduced in the ES6 version of javascript.
-
-Rest parameter ( … )
-
-It provides an improved way of handling parameters of a function.
-
-Using the rest parameter syntax, we can create functions that can take a variable number of arguments.
-
-Any number of arguments will be converted into an array using the rest parameter.
-
-It also helps in extracting all or some parts of the arguments.
-
-Rest parameter can be used by applying three dots (...) before the parameters.
-
-```
-function extractingArgs(...args){
-  return args[1];
-}
-
-// extractingArgs(8,9,1); // Returns 9
-
-function addAllArgs(...args){
-  let sumOfArgs = 0;
-  let i = 0;
-  while(i < args.length){
-    sumOfArgs += args[i];
-    i++;
-  }
-  return sumOfArgs;
-}
-
-addAllArgs(6, 5, 7, 99); // Returns 117
-addAllArgs(1, 3, 4); // Returns 8
-```
-- Rest parameter should always be used at the last parameter of a function:
-
-Spread operator (…)
-
-Although the syntax of spread operator is exactly the same as the rest parameter, spread operator is used to spread an array, and object literals. We also use spread operators where one or more arguments are expected in a function call.
-
-```
-function addFourNumbers(num1,num2,num3,num4){
-  return num1 + num2 + num3 + num4;
-}
-
-let fourNumbers = [5, 6, 7, 8];
-
-
-addFourNumbers(...fourNumbers);
-// Spreads [5,6,7,8] as 5,6,7,8
-
-let array1 = [3, 4, 5, 6];
-let clonedArray1 = [...array1];
-// Spreads the array into 3,4,5,6
-console.log(clonedArray1); // Outputs [3,4,5,6]
-```
-
-### Q : What is Object Destructuring?
-
-A : Object destructuring is a new way to extract elements from an object or an array.
-
-```
-const classDetails = {
-  strength: 78,
-  benches: 39,
-  blackBoard:1
-}
-
-const {strength:classStrength, benches:classBenches,blackBoard:classBlackBoard} = classDetails;
-
-console.log(classStrength); // Outputs 78
-console.log(classBenches); // Outputs 39
-console.log(classBlackBoard); // Outputs 1
-```
 
 ### Q : What are the falsy values in JavaScript?
 A : '', 0, null
@@ -803,5 +820,11 @@ Scroll event handler — Another application of throttling is in content-loading
 
 Throttling or sometimes is also called throttle function is a practice used in websites. Throttling is used to call a function after every millisecond or a particular interval of time only the first click is executed immediately.
 
+###Q : What are the differences between cookie, local storage and session storage
+A : 
+| Feature     | Cookie | Local storage      | Session storage |
+| ----------- | ----------- | ----------- | ----------- |
+| Accessed on client or server side | Both server-side & client-side | client-side only | client-side only |
+| Paragraph   | Text        | Paragraph   | Text        |
 
 
