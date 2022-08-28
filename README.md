@@ -822,6 +822,7 @@ Scroll event handler — Another application of throttling is in content-loading
 3) Even though both debouncing and throttling seems like similar, both have their own use-cases. It’s not recommended to use throttling logic in search bar and we we cannot use debouncing in shooting game scenario or browser resizing or onScroll events.
 
 Throttling or sometimes is also called throttle function is a practice used in websites. Throttling is used to call a function after every millisecond or a particular interval of time only the first click is executed immediately.
+~~~
 
 ###Q : What are the differences between cookie, local storage and session storage
 A : 
