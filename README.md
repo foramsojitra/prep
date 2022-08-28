@@ -345,15 +345,14 @@ for (let x of cars) {
 ```
 
 ### Q : What is event bubbling and capturing?
-A : Event bubbling and capturing are two ways of event propagation
+A : Event flow is the order in which event is received on the web page. When you click an element that is nested in various other elements, before your click actually reaches its destination, or target element, it must trigger the click event for each of its parent elements first, starting at the top with the global window object. There are two ways of event flow
 
-When an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other ancestors.
-If you have event on body and some parent and child element than when you click on child element it will execute event on the child firstevent bubbling execute the lowest order first so child element's event will execute first than it will check if parent element has any event if it has than it will be executed and after that if body element has any event that will be executed.
+Top to Bottom(Event Capturing)
+Bottom to Top (Event Bubbling)
 
-* Events first are captured down to deepest target, then bubble up. In IE<9 they only bubble.
-* All handlers work on bubbling stage excepts addEventListener with last argument true, which is the only way to catch the event on capturing stage.
-* Bubbling/capturing can be stopped by event.cancelBubble=true (IE) or event.stopPropagation() for other browsers.
+* Event bubbling is a type of event propagation where the event first triggers on the innermost target element, and then successively triggers on the ancestors (parents) of the target element in the same nesting hierarchy till it reaches the outermost DOM element.
 
+* Event capturing is a type of event propagation where the event is first captured by the outermost element, and then successively triggers on the descendants (children) of the target element in the same nesting hierarchy till it reaches the innermost DOM element.
 
 ### Q : What is ECMA Script and How are JavaScript and ECMA Script related?
 ECMA Script are like rules and guideline while Javascript is a scripting language used for web development.
@@ -600,6 +599,10 @@ function operationOnSum(num1,num2,operation){
 operationOnSum(3, 3, divideByHalf); // Outputs 3
 operationOnSum(5, 5, multiplyBy2); // Outputs 20
 ```
+The callbacks are needed because javascript is an event driven language. That means instead of waiting for a response javascript will keep executing while listening for other events. Let's take an example with the first function invoking an API call(simulated by setTimeout) and the next function which logs the message.
+
+As observed from the output, javascript didn't wait for the response of the first function and the remaining code block got executed. So callbacks are used in a way to make sure that certain code doesn’t execute until the other code finishes execution.
+
 Callback hell: When we develop a web application that includes a lot of code, then working with callback is messy. This excessive Callback nesting is often referred to as Callback hell.
 
 ### Q : What is promises?
@@ -826,5 +829,32 @@ A :
 | ----------- 				  | -----------                    | ----------- 	| ----------- 	   |
 | Accessed on client or server side       | Both server-side & client-side | client-side only   | client-side only |
 | size				          | 4KB	        		   | 5 MB	   	| 5 MB        	   |
+
+LocalStorage is the same as SessionStorage but it persists the data even when the browser is closed and reopened(i.e it has no expiration time) whereas in sessionStorage data gets cleared when the page session ends.
+
+###Q : What is the use of setTimeout?
+A : The setTimeout() method is used to call a function or evaluate an expression after a specified number of milliseconds. For example, let's log a message after 2 seconds using setTimeout method,
+```
+setTimeout(function () {
+  console.log("Good morning");
+}, 2000);
+```
+
+###Q : What is the use of setInterval?
+A : The setInterval() method is used to call a function or evaluate an expression at specified intervals (in milliseconds). For example, let's log a message after 2 seconds using setInterval method,
+
+```
+setInterval(function () {
+  console.log("Good morning");
+}, 2000);
+```
+
+###Q : what is setImmediate?
+A : setImmediate() is designed to execute a script once the current poll (event loop) phase completes.
+```
+setImmediate(function () {
+  console.log("Good morning");
+});
+```
 
 
