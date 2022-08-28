@@ -53,6 +53,35 @@ class Person {
 var object = new Person("Sudheer");
 ``` 
 
+
+### Q : call, apply and bind in JavaScript
+A : 
+```
+var obj = {
+ num: 2
+}
+
+var add = function(a,b,c){
+ return this.num + a + b + c
+}
+
+add.call(obj, 1,2,3)
+add.apply(obj, [1,2,3])
+var bound = add.bind(obj)
+bound(1,2,3)
+```
+
+* call method invokes the function with 1st argument as context object and further comma separated arguments which the function can directly consume.
+* apply is exactly same as call method, the only difference is it takes the 2nd argument as array list of the parameters.
+* bind method is similar to the call method but it does not invokes the function, rather gives you the copy of exactly same function, which can be invoked later.
+
+where it's used
+
+ apply() when you want to invoke the function immediately, and modify the context. Call/apply call the function immediately, whereas bind returns a function that, when later executed, will have the correct context set for calling the original function.
+
+The call, bind and apply methods can be used to set the this keyword independent of how a function is called. The bind method creates a copy of the function and sets the this keyword, while the call and apply methods sets the this keyword and calls the function immediately.
+
+
 ### Q : Difference between "var", "let" and "const"
 A : 
 var	let	const
@@ -349,7 +378,8 @@ Math objects inherit properties from the Math prototype
 
 Array objects inherit properties from the Array prototype.
 
-On top of the chain is Object.prototype. Every prototype inherits properties and methods from the Object.prototype.
+On top of the 
+is Object.prototype. Every prototype inherits properties and methods from the Object.prototype.
 
 A prototype is a blueprint of an object. Prototype allows us to use properties and methods on an object even if the properties and methods do not exist on the current object.
 
@@ -482,13 +512,13 @@ ECMA Script are like rules and guideline while Javascript is a scripting languag
 
 ### Q : What are some of the features of ES6?
 A : 
-*Support for constants (also known as “immutable variables”)
-*Block-Scope support for both variables, constants, functions
-*Arrow functions
-*Extended Parameter Handling
-*Template Literals and Extended Literals
-*Spread operator
-*Destructuring Assignment
+* Support for constants (also known as “immutable variables”)
+* Block-Scope support for both variables, constants, functions
+* Arrow functions
+* Extended Parameter Handling
+* Template Literals and Extended Literals
+* Spread operator
+* Destructuring Assignment
 
 ### Q : What is memoization?
 A : Memoization is an optimization technique that speeds up applications by storing the results of expensive function calls and returning the cached result when the same inputs are supplied again.
@@ -698,34 +728,6 @@ Scroll event handler — Another application of throttling is in content-loading
 3) Even though both debouncing and throttling seems like similar, both have their own use-cases. It’s not recommended to use throttling logic in search bar and we we cannot use debouncing in shooting game scenario or browser resizing or onScroll events.
 
 Throttling or sometimes is also called throttle function is a practice used in websites. Throttling is used to call a function after every millisecond or a particular interval of time only the first click is executed immediately.
-
-
-### Q : call, apply and bind in JavaScript
-A : 
-```
-var obj = {
- num: 2
-}
-
-var add = function(a,b,c){
- return this.num + a + b + c
-}
-
-add.call(obj, 1,2,3)
-add.apply(obj, [1,2,3])
-var bound = add.bind(obj)
-bound(1,2,3)
-```
-
-* call method invokes the function with 1st argument as context object and further comma separated arguments which the function can directly consume.
-* apply is exactly same as call method, the only difference is it takes the 2nd argument as array list of the parameters.
-* bind method is similar to the call method but it does not invokes the function, rather gives you the copy of exactly same function, which can be invoked later.
-
-where it's used
-
- apply() when you want to invoke the function immediately, and modify the context. Call/apply call the function immediately, whereas bind returns a function that, when later executed, will have the correct context set for calling the original function.
-
-The call, bind and apply methods can be used to set the this keyword independent of how a function is called. The bind method creates a copy of the function and sets the this keyword, while the call and apply methods sets the this keyword and calls the function immediately.
 
 
 
