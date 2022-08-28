@@ -53,6 +53,21 @@ class Person {
 var object = new Person("Sudheer");
 ``` 
 
+### Q : what is the diff between deep cloning and shallow cloning
+A : In Shallow copy, a copy of the original object is stored and only the reference address is finally copied. In Deep copy, the copy of the original object and the repetitive copies both are stored.
+
+A deep copying means that value of the new variable is disconnected from the original variable while a shallow copy means that some values are still connected to the original variable.
+
+For Deep clone use lodash lobrary
+```_.cloneDeep(object)```
+
+or use ... operator
+```var a = { ...obj }```
+
+or can use var cloned = JSON.parse(JSON.stringify(obj));  but it looses all undefined and function and converts it to null value
+
+shallow cloning is just like assign value to var like let a = obj;
+
 
 ### Q : call, apply and bind in JavaScript
 A : 
