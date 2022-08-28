@@ -1226,5 +1226,7 @@ ObjectId contains the following:
 * Timestamp
 
 ### Q : Explain Vertical Scaling and Horizontal Scaling?
-Vertical Scaling: Vertical Scaling increases storage and CPU resources for expanding the capacity.
-Horizontal Scaling: Horizontal Scaling splits the datasets and circulates the data over multiple shards or servers.
+A : 
+* Vertical Scaling: Vertical Scaling increases storage and CPU resources for expanding the capacity. SQL databases are vertically scalable
+
+* Horizontal Scaling: Horizontal Scaling splits the datasets and circulates the data over multiple shards or servers. NoSQL databases are horizontally scalable
