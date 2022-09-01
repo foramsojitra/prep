@@ -153,5 +153,73 @@ The state of the input element is handled by the DOM. Whenever the value of the 
 
 Whenever use enters data inside the input field, the updated data is shown directly. To access the value of the input element, we can use ref.
 
-### Q : 
+### Q : What are the lifecycle methods of React?
+A : 
+componentWillMount
+componentDidMount
+componentWillReceiveProps
+shouldComponentUpdate
+componentWillUpdate
+componentDidUpdate
+componentWillUnmount
+
+### Q : What are Higher-Order Components?
+A : 
+A higher-order component (HOC) is a function that takes a component and returns a new component. Basically, it's a pattern that is derived from React's compositional nature.
+
+We call them pure components because they can accept any dynamically provided child component but they won't modify or copy any behavior from their input components.
+
+const EnhancedComponent = higherOrderComponent(WrappedComponent)
+HOC can be used for many use cases:
+
+* Code reuse, logic and bootstrap abstraction.
+* Render hijacking.
+* State abstraction and manipulation.
+* Props manipulation.
+
+### Q : What is context?
+Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+
+For example, authenticated users, locale preferences, UI themes need to be accessed in the application by many components.
+```
+const {Provider, Consumer} = React.createContext(defaultValue)
+```
+
+### Q : What is reconciliation?
+A : When a component's props or state change, React decides whether an actual DOM update is necessary by comparing the newly returned element with the previously rendered one. When they are not equal, React will update the DOM. This process is called reconciliation.
+
+### Q : What are the rules that must be followed while using React Hooks?
+A :
+* React Hooks must be called only at the top level. It is not allowed to call them inside the nested functions, loops, or conditions.
+* It is allowed to call the Hooks only from the React Function Components.
+
+### Q : Name a few techniques to optimize React app performance.
+A : 
+* Using useMemo( ) -
+It is a React hook that is used for caching CPU-Expensive functions.
+Sometimes in a React app, a CPU-Expensive function gets called repeatedly due to re-renders of a component, which can lead to slow rendering.
+useMemo( ) hook can be used to cache such functions. By using useMemo( ), the CPU-Expensive function gets called only when it is needed.
+
+* Using React.PureComponent -
+It is a base component class that checks the state and props of a component to know whether the component should be updated.
+Instead of using the simple React.Component, we can use React.PureComponent to reduce the re-renders of a component unnecessarily.
+React.PureComponent is exactly the same as React.Component except that it handles the shouldComponentUpdate() method for you. When props or state changes, PureComponent will do a shallow comparison on both props and state. Component on the other hand won't compare current props and state to next out of the box. Thus, the component will re-render by default whenever shouldComponentUpdate is called.
+
+* Maintaining State Colocation -
+This is a process of moving the state as close to where you need it as possible.
+Sometimes in React app, we have a lot of unnecessary states inside the parent component which makes the code less readable and harder to maintain. Not to forget, having many states inside a single component leads to unnecessary re-renders for the component.
+It is better to shift states which are less valuable to the parent component, to a separate component.
+
+* Lazy Loading -
+ It is a technique used to reduce the load time of a React app. Lazy loading helps reduce the risk of web app performances to a minimum.
+
+### Q : Explain about types of Hooks in React.
+A : 
+* useState(): This functional component is used to set and retrieve the state.
+* useEffect(): It enables for performing the side effects in the functional components.
+* useContext(): It is used for creating common data that is to be accessed by the components hierarchy without having to pass the props down to each level.
+* useRef() : It will permit creating a reference to the DOM element directly within the functional component.
+* useLayoutEffect(): It is used for the reading layout from the DOM and re-rendering synchronously.
+* useMemo() : This will be used for recomputing the memoized value when there is a change in one of the dependencies. This optimization will help for avoiding expensive calculations on each render.
+* useCallback() : This is useful while passing callbacks into the optimized child components and depends on the equality of reference for the prevention of unneeded renders.
 
