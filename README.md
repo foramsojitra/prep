@@ -582,22 +582,30 @@ var a = function() {
  console.log('Hello');
 }
 ```
+
 ### Q : What do you understand by Callback and Callback hell in JavaScript?
-A : Callback: Callback is an asynchronous equivalent for a function. A callback function is called at the completion of a given task.  callback is a function that will be executed after another function gets executed.
-. It is used to handle the execution of function after the completion of the execution of another function. A callback would be helpful in working with events. In the callback, a function can be passed as an argument to another function. It is a great way when we are dealing with basic cases such as minimal asynchronous operations.
+A : 
+A Callback is a function that is to be executed after another function has finished executing — hence the name ‘call back’.
+
+A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action. The above example is a synchronous callback, as it is executed immediately.
+
+Callback: Callback is an asynchronous equivalent for a function. A callback function is called at the completion of a given task.  callback is a function that will be executed after another function gets executed.
+
+It is used to handle the execution of function after the completion of the execution of another function. A callback would be helpful in working with events. In the callback, a function can be passed as an argument to another function. It is a great way when we are dealing with basic cases such as minimal asynchronous operations.
 ```javascript
-function divideByHalf(sum){
-  console.log(Math.floor(sum / 2));
+// function
+function greet(name, callback) {
+    console.log('Hi' + ' ' + name);
+    callback();
 }
-function multiplyBy2(sum){
-  console.log(sum * 2);
+
+// callback function
+function callMe() {
+    console.log('I am callback function');
 }
-function operationOnSum(num1,num2,operation){
-  var sum = num1 + num2;
-  operation(sum);
-}
-operationOnSum(3, 3, divideByHalf); // Outputs 3
-operationOnSum(5, 5, multiplyBy2); // Outputs 20
+
+// passing function as an argument
+greet('Peter', callMe);
 ```
 The callbacks are needed because javascript is an event driven language. That means instead of waiting for a response javascript will keep executing while listening for other events. Let's take an example with the first function invoking an API call(simulated by setTimeout) and the next function which logs the message.
 
@@ -1130,6 +1138,92 @@ these tools can work
 * Density-based Clustering.
 * Distribution-based Clustering.
 * Hierarchical Clustering. 
+
+### Q : What are design patterns?
+A : First of all, let’s start with an explanation of what design patterns are. In the simplest terms, they allow us to reuse code for recurring problems. Instead of solving the same problems again and again, we can reuse efficient code that already works.
+
+Design patterns, simply put, are a way for you to structure your solution’s code in a way that allows you to gain some kind of benefit. Such as faster development speed, code reusability, and so on.
+
+A design pattern is a general, reusable solution to a commonly occurring problem.
+
+Why would you use design patterns? Here are some good reasons:
+
+* They are well-documented and tested.
+* They are reusable in many different situations.
+* They are efficient.
+* They will save you time.
+
+There are three types of design patterns:
+
+1. Creational — the creation of the object instances
+2. Structural — the way the objects are designed
+3. Behavioural — how objects interact with each other
+
+
+* Singletons
+
+- The singleton pattern is a design pattern that restricts the instantiation of a class to one object.
+
+- The singleton patterns restrict the number of instantiations of a “class” to one. Creating singletons in Node.js
+Node.js is an asynchronous event-driven JavaScript runtime and is the most effective when building scalable network applications. Node.js is free of locks, so there's no chance to dead-lock any process. is pretty straightforward, as require is there to help you.
+
+We can get a glimpse of the purpose of this design pattern from its name: singleton. We use this design pattern when we only want a single instance of a class. That means we cannot create multiple instances — just one. If there is no instance, a new one is created. If there is an existing instance, it will use that one.
+```
+//area.js
+var PI = Math.PI;
+
+function circle (radius) {
+  return radius * radius * PI;
+}
+
+module.exports.circle = circle;
+```
+It does not matter how many times you will require this module in your application; it will only exist as a single instance.
+```
+var areaCalc = require('./area');
+```
+console.log(areaCalc.circle(5));
+Because of this behaviour of require, singletons are probably the most common Node.js design patterns among the modules in NPM
+
+* Factory
+- Once again, we can get an idea of what this design pattern does by looking at its name. The Factory design pattern allows us to define an interface or abstract class used to create an object. We then use the interface/abstract class to instantiate different objects.
+
+- Consider an application where we have to create and use all types of vehicles. There are motor vehicles (cars, buses, trucks, motorcycles), railed vehicles (trains, trams), aircraft (airplanes, helicopters), and watercraft (ships, boats). Thus, instead of creating instances by calling the constructor of each class individually, we can implement the Factory pattern as follows:
+```
+import Motorvehicle from './Motorvehicle'; 
+import Aircraft from './Aircraft'; 
+import Railvehicle from './Railvehicle';  
+const VehicleFactory = (type, make, model, year) => {   
+    if (type === car) {     
+        return new Motorvehicle('car', make, model, year);   
+    } else if (type === airplane) {     
+        return new Aircraft('airplane', make, model, year);   
+    } else if (type === helicopter) {     
+        return new Aircraft('helicopter', make, model, year);   
+    } else {     
+        return new Railvehicle('train', make, model, year);   
+    } 
+}  
+module.exports = VehicleFactory;
+```
+
+* Factory pattern provides an interface/abstract class for creating objects.
+* You can create different objects by using the same interface/abstract class.
+* It improves the structure of the code and makes it easier to maintain it.
+
+* Builder Pattern
+- Separate the construction of a complex object from its representation so that the same construction process can create different representations
+
+- The Builder pattern is used to create objects in "steps". Normally we will have functions or methods that add certain properties or methods to our object.
+
+- The cool thing about this pattern is that we separate the creation of properties and methods into different entities.
+
+* Prototype Pattern
+
+- Specify the kind of objects to create using a prototypical instance, and create new objects by copying this prototype.
+
+- The Prototype pattern allows you to create an object using another object as a blueprint, inheriting its properties and methods.
+
 
 ### REST api
 A : REST represents REpresentational State Transfer; it is a relatively new aspect of writing web API.
