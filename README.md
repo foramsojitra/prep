@@ -658,6 +658,22 @@ promise.
         console.log('Some error has occured'); 
     }); 
 ```
+
+* Promise.all()
+- Promise.all() takes an iterable (such as Array) and returns a single promise that resolves when all of the promises have resolved.
+
+- Keeping that in mind we can see how this method can be helpful, for example, if we need to fetch data from different points and they’re not dependent on each other (that means that we’re not interested in the sequence of execution) we can use Promise.all() to do that. But, there are some things that we need to keep in mind when using this method.
+
+- Promise.all() has a fail-fast behavior. It means that if one of the promises is rejected then the promise returned from Promise.all() is rejected as well.
+
+* Promise.allSettled()
+- Promise.allSettled() is really similar to Promise.all() . It also takes an iterable and returns a promise that resolves after all of the given promises either have resolved or rejected, with an array of objects which describe the outcome of each promise.
+
+- In simple words, it’s Promise.all() without fail-fast behavior and also a bit different return value. But why the different return value? Well, for us to understand whether the provided promise was rejected or resolved a simple value is usually not enough. 
+
+* Promise.race()
+- Promise.race() is a bit different although very similar to previous methods that we’ve discussed. It also takes in an iterable as an argument and returns a promise that either resolves or rejects as soon as one of the promises are either resolved or rejected. 
+
 ### Q : What are the pros and cons of promises over callbacks? 
 A : Below are the list of pros and cons of promises over callbacks,
 
