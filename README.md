@@ -404,10 +404,9 @@ Using the rest parameter syntax, we can create functions that can take a variabl
 
 Any number of arguments will be converted into an array using the rest parameter.
 
-It also helps in extracting all or some parts of the arguments.
+The rest operator (…) allows us to call a function with any number of arguments and then access those excess arguments as an array. The rest operator also allows us in destructuring array or objects.
 
-Rest parameter can be used by applying three dots (...) before the parameters.
-
+The main difference between rest and spread is that the rest operator puts the rest of some specific user-supplied values into a JavaScript array.
 ```
 function extractingArgs(...args){
   return args[1];
@@ -432,23 +431,42 @@ addAllArgs(1, 3, 4); // Returns 8
 
 Spread operator (…)
 
-Although the syntax of spread operator is exactly the same as the rest parameter, spread operator is used to spread an array, and object literals. We also use spread operators where one or more arguments are expected in a function call.
+Although the syntax of spread operator is exactly the same as the rest parameter, spread operator is used to spread an array, and object literals. We also use spread operators where one or more arguments are expected in a function call. 
+
+The spread operator (…) allows us to expand an iterable like array into its individual elements.
 
 ```
-function addFourNumbers(num1,num2,num3,num4){
-  return num1 + num2 + num3 + num4;
+
+const myName = ["Sofela", "is", "my"];
+const aboutMe = ["Oluwatobi", ...myName, "name."];
+
+console.log(aboutMe);
+
+// The invocation above will return:
+[ "Oluwatobi", "Sofela", "is", "my", "name." ]
+
+----------------------------------------------------------------------------------
+
+const myName = "Oluwatobi Sofela";
+
+console.log([...myName]);
+
+// The invocation above will return:
+[ "O", "l", "u", "w", "a", "t", "o", "b", "i", " ", "S", "o", "f", "e", "l", "a" ]
+
+----------------------------------------------------------------------------------
+
+const numbers = [1, 3, 5, 7];
+
+function addNumbers(a, b, c, d) {
+  return a + b + c + d;
 }
 
-let fourNumbers = [5, 6, 7, 8];
+console.log(addNumbers(...numbers));
 
+// The invocation above will return:
+16
 
-addFourNumbers(...fourNumbers);
-// Spreads [5,6,7,8] as 5,6,7,8
-
-let array1 = [3, 4, 5, 6];
-let clonedArray1 = [...array1];
-// Spreads the array into 3,4,5,6
-console.log(clonedArray1); // Outputs [3,4,5,6]
 ```
 
 ### Q : What is Object Destructuring?
@@ -584,7 +602,8 @@ var a = function() {
 ```
 
 ### Q : What do you understand by Callback and Callback hell in JavaScript?
-A : 
+A : A callback function is a function which is passed as an argument to second function, which is invoked inside the second function at some point to execute some action. But, sometimes callback gets difficult to write in the code. So to make it simple, let’s first start with knowing the syntax of arrow function and its similarities with regular function.
+
 A Callback is a function that is to be executed after another function has finished executing — hence the name ‘call back’.
 
 A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action. The above example is a synchronous callback, as it is executed immediately.
