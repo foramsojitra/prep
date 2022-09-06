@@ -124,7 +124,12 @@ or use ... operator
 
 or var student2 = Object.assign( {}, obj);
 
-or can use var cloned = JSON.parse(JSON.stringify(obj));  but it looses all undefined and function and converts it to null value
+or can use var cloned = JSON.parse(JSON.stringify(obj));  but it looses all undefined and function and converts it to null value. Because JSON.parse(JSON.stringify(obj)) has some limitations like you have mentioned, which are, they do not serialize the circular object or things like Map, Set, Date, RegEx etc.
+
+or structuredClone
+
+const a = { x: 20, date: new Date() };
+const b = structuredClone(a); 
 
 shallow cloning is just like assign value to var like let a = obj;
 
@@ -896,7 +901,7 @@ setInterval(function () {
 }, 2000);
 ```
 
-###Q : what is setImmediate?
+### Q : what is setImmediate?
 A : setImmediate() is designed to execute a script once the current poll (event loop) phase completes.
 ```
 setImmediate(function () {
@@ -1160,6 +1165,20 @@ if (cluster.isMaster) {
 }
 ```
 
+### Q : Dependency and Devdependencies in package.json
+A :
+- "dependencies" : Packages required by your application in production.
+```
+npm install <package-name> --save
+or
+npm install <package-name> --save-prod
+```
+
+- "devDependencies" : Packages that are only needed for local development and testing.
+```
+npm install <package-name> --save-dev
+```
+
 ### Q : Node.js Memory Leak Detectors
 A : Fixing a memory leak is not as straightforward as it may seem. You’ll need to check your codebase to find any issues with your global scope, closures, heap memory, or any other pain points I outlined above.
 
@@ -1195,7 +1214,7 @@ There are three types of design patterns:
 3. Behavioural — how objects interact with each other
 
 
-* Singletons
+## Singletons
 
 - The singleton pattern is a design pattern that restricts the instantiation of a class to one object.
 
@@ -1220,7 +1239,7 @@ var areaCalc = require('./area');
 console.log(areaCalc.circle(5));
 Because of this behaviour of require, singletons are probably the most common Node.js design patterns among the modules in NPM
 
-* Factory
+## Factory
 - Once again, we can get an idea of what this design pattern does by looking at its name. The Factory design pattern allows us to define an interface or abstract class used to create an object. We then use the interface/abstract class to instantiate different objects.
 
 - Consider an application where we have to create and use all types of vehicles. There are motor vehicles (cars, buses, trucks, motorcycles), railed vehicles (trains, trams), aircraft (airplanes, helicopters), and watercraft (ships, boats). Thus, instead of creating instances by calling the constructor of each class individually, we can implement the Factory pattern as follows:
@@ -1246,18 +1265,169 @@ module.exports = VehicleFactory;
 * You can create different objects by using the same interface/abstract class.
 * It improves the structure of the code and makes it easier to maintain it.
 
-* Builder Pattern
+## Builder Pattern
 - Separate the construction of a complex object from its representation so that the same construction process can create different representations
 
 - The Builder pattern is used to create objects in "steps". Normally we will have functions or methods that add certain properties or methods to our object.
 
 - The cool thing about this pattern is that we separate the creation of properties and methods into different entities.
 
-* Prototype Pattern
+## Prototype Pattern
 
 - Specify the kind of objects to create using a prototypical instance, and create new objects by copying this prototype.
 
 - The Prototype pattern allows you to create an object using another object as a blueprint, inheriting its properties and methods.
+
+### Q : OOPS in Javascript
+A : 
+## 1. Polymorphism in JavaScript : 
+- Polymorphism refers to the concept that there can be multiple forms of a single method, and depending upon the runtime scenario, one type of object can have different behavior. It utilizes “Inheritance” for this purpose.
+
+- Polymorphism in JavaScript refers to the concept of reusing a single piece of code multiple times. By utilizing Polymorphism, you can define multiple forms of a method, and depending upon the runtime scenario, one type of object can have different behavior. 
+
+- Animals are frequently used to explain Polymorphism. In the below-given example, “Animal” is a parent class whereas, Cat and Dog are its derived or child classes. The speak() method is common in both child classes. The user can select an object from any child class at runtime, and the JavaScript interpreter will invoke the “speak()” method accordingly.
+
+```
+class Animal {
+    speak()
+    {
+      console.log("Animals have different sounds");
+    }
+  }
+class Cat extends Animal {}
+class Dog extends Animal {}
+
+var cat = new Cat();  
+cat.speak(); //Animals have different sounds
+var dog  = new Dog();
+dog.speak(); //Animals have different sounds
+```
+
+- Method overriding is a specific type of Polymorphism that permits a child class to implement the method already added in the parent or base class, in a different manner. Upon doing so, the child class overrides the method of the parent class.
+
+```
+class Animal {
+    speak()
+    {
+      console.log("Animals have different sounds");
+    }
+  }
+class Cat extends Animal {
+speak(){
+console.log("Cat says Meow Meow");}
+  } 
+  }
+class Dog extends Animal {
+speak(){
+console.log("Dog say Woof Woof");}
+  }  
+  }
+
+var cat = new Cat();  
+cat.speak(); //Cat says Meow Meow
+var dog  = new Dog();
+dog.speak(); //Dog say Woof Woof
+```
+- Polymorphism enables the programmers to reuse the code, which saves time.
+- Implicit type conversion is supported by Polymorphism.
+- It allows a child class to have the same name method added in the parent class, with different functionality.
+- In different scenarios, a method’s functionality is added differently.
+- Single variables can be utilized for storing multiple data types.
+
+## 2.) Object : 
+- An Object is a unique entity that contains properties and methods. For example “car” is a real life Object, which has some characteristics like color, type, model, horsepower and performs certain actions like drive. The characteristics of an Object are called Properties in Object-Oriented Programming and the actions are called methods. An Object is an instance of a class. Objects are everywhere in JavaScript, almost every element is an Object whether it is a function, array, or string. A Method in javascript is a property of an object whose value is a function.
+
+```
+let person = {
+    first_name:'Mukul',
+    last_name: 'Latiyan',
+ 
+    //method
+    getFunction : function(){
+        return (`The name of the person is
+          ${person.first_name} ${person.last_name}`)
+    },
+    //object within object
+    phone_number : {
+        mobile:'12345',
+        landline:'6789'
+    }
+}
+console.log(person.getFunction()); //The name of the person is Mukul Latiyan.
+console.log(person.phone_number.landline); //6789
+```
+
+## 3.) Classes :
+- Classes are blueprint of an Object. A class can have many Objects because class is a template while Object are instances of the class or the concrete implementation. 
+- Before we move further into implementation, we should know unlike other Object Oriented Language there are no classes in JavaScript we have only Object. To be more precise, JavaScript is a prototype based Object Oriented Language, which means it doesn’t have classes, rather it defines behaviors using a constructor function and then reuse it using the prototype. 
+- Even the classes provided by ECMA2015 are objects.
+
+```
+class Vehicle {
+  constructor(name, maker, engine) {
+    this.name = name;
+    this.maker =  maker;
+    this.engine = engine;
+  }
+  getDetails(){
+      return (`The name of the bike is ${this.name}.`)
+  }
+}
+// Making object with the help of the constructor
+let bike1 = new Vehicle('Hayabusa', 'Suzuki', '1340cc');
+let bike2 = new Vehicle('Ninja', 'Kawasaki', '998cc');
+ 
+console.log(bike1.name);    // Hayabusa
+console.log(bike2.maker);   // Kawasaki
+console.log(bike1.getDetails()); //The name of the bike is Hayabusa
+```
+
+## 4.) Encapsulation :
+- The process of wrapping properties and functions within a single unit is known as encapsulation. 
+```
+class person{
+    constructor(name,id){
+        this.name = name;
+        this.id = id;
+    }
+    add_Address(add){
+        this.add = add;
+    }
+    getDetails(){
+        console.log(`Name is ${this.name},Address is: ${this.add}`);
+    }
+}
+ 
+let person1 = new person('Mukul',21);
+person1.add_Address('Delhi');
+person1.getDetails();
+```
+
+## 5.) Inheritance : 
+- It is a concept in which some properties and methods of an Object are being used by another Object. Unlike most of the OOP languages where classes inherit classes, JavaScript Objects inherit Objects i.e. certain features (property and methods) of one object can be reused by other Objects. 
+```
+class person{
+    constructor(name){
+        this.name = name;
+    }
+    //method to return the string
+    toString(){
+        return (`Name of person: ${this.name}`);
+    }
+}
+class student extends person{
+    constructor(name,id){
+        //super keyword for calling the above class constructor
+        super(name);
+        this.id = id;
+    }
+    toString(){
+        return (`${super.toString()},Student ID: ${this.id}`);
+    }
+}
+let student1 = new student('Mukul',22);
+console.log(student1.toString());
+```
 
 
 ### REST api
