@@ -1463,6 +1463,11 @@ Here is a simple description of all: POST is always for creating a resource ( do
 ### Q : What are the advantages of PostgreSQL?
 A : Some of the advantages of PostgreSQL are open-source DBMS, community support, ACID compliance, diverse indexing techniques, full-text search, a variety of replication methods, and diversified extension functions, etc.
 
+### Q : char and varchar difference in sql
+A : VARCHAR is variable length, while CHAR is fixed length.
+
+SQL varchar stores variable string length whereas SQL char stores fixed string length. This means SQL Server varchar holds only the characters we assign to it and char holds the maximum column space regardless of the string it holds.
+
 ### Q : What is the name of the process of splitting a large table into smaller pieces in PostgreSQL?
 A : The name of the process of splitting a large table into smaller pieces in PostgreSQL is known as table partitioning.
 
