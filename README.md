@@ -3,6 +3,7 @@
 
 # Javascript
 
+all js interview questions
 javascript is the best
 
 ### Q : What is js?
